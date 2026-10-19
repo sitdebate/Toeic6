@@ -1,0 +1,176 @@
+// ===== Part 6 問題データ（PASSAGES 配列に文章を追加していけます）=====
+// text 中の [1]〜[4] が空欄。qs の a は正解の番号（0=A, 1=B, 2=C, 3=D）。
+const PASSAGES = [
+{ type: "ビジネスメール", title: "件名：配送遅延のお知らせ",
+  text: `Dear Ms. Harper,
+
+Thank you for your order of the Maple Desk. We are writing to inform you that the delivery has [1] delayed because of a shortage of materials at our factory. [2] The desk will now arrive on October 28, not October 21 as originally planned. We sincerely apologize for the inconvenience. [3], we would like to offer you a 10 percent discount on your next purchase. If you have any [4], please contact our customer service team at 555-0148.
+
+Sincerely,
+Daniel Cho
+Furniture Plus`,
+  ja: `ハーパー様
+
+メープルデスクをご注文いただきありがとうございます。弊社工場での材料不足のため、お届けが遅れておりますことをお知らせいたします。生産は来週再開される見込みです。デスクは当初の予定の10月21日ではなく、10月28日にお届けとなります。ご不便をおかけしますことを心よりお詫び申し上げます。さらに、次回のご購入時に使える10パーセント割引をご提供いたします。ご質問がございましたら、555-0148のカスタマーサービスまでご連絡ください。
+
+敬具
+ダニエル・チョウ
+ファニチャー・プラス`,
+  qs: [
+    { k: "文法(態・完了)", c: ["be", "been", "being", "was"], a: 1, e: "has の後ろは現在完了(has + 過去分詞)。「遅れている」という受動なので has been delayed です。has be / has being / has was は文法的に不可です。" },
+    { k: "一文挿入", c: ["Our showroom is open daily until 6 p.m.", "We expect production to resume next week.", "Please return the desk in its original box.", "The factory was built in 1995."], a: 1, e: "直前は「材料不足で配送が遅れる」、直後は「新しい到着日」。生産再開の見込みを述べる B が、遅延の理由と新しい日付をつなぎます。他は文脈と無関係です。" },
+    { k: "接続副詞", c: ["However", "In addition", "Otherwise", "Instead"], a: 1, e: "お詫びに続けて、さらに割引を提供する流れなので、情報を付け加える In addition(さらに)が適切です。However(しかし)は逆接、Otherwise(さもなければ)は条件、Instead(代わりに)は代替を表します。" },
+    { k: "語彙", c: ["conclusions", "questions", "occasions", "directions"], a: 1, e: "「ご質問があればご連絡を」という定型表現なので questions(質問)。conclusions(結論)/ occasions(機会)/ directions(指示・方向)は意味が合いません。" }
+  ] },
+{ type: "社内告知", title: "件名：新しいセキュリティバッジについて",
+  text: `To: All Staff
+From: Human Resources
+Subject: New Security Badges
+
+Starting on November 1, all employees will be required to wear a new security badge at all times in the building. The new badges [1] at the reception desk from October 25 to 29. Please bring your current badge when you pick up the new one. [2], badges cannot be issued to employees without a valid photo ID. [3] This change is part of our effort to improve [4] across the company. Employees who lose their badge should report it to the Security Office immediately.`,
+  ja: `宛先：全従業員
+差出人：人事部
+件名：新しいセキュリティバッジ
+
+11月1日から、全従業員は建物内で常に新しいセキュリティバッジを着用することが義務づけられます。新しいバッジは10月25日から29日まで、受付で配布されます。新しいバッジを受け取る際は、現在のバッジをお持ちください。さらに、有効な写真付き身分証明書がない従業員には、バッジを発行できません。新しいバッジには写真と、ドア開錠用のバーコードが付いています。この変更は、社内全体のセキュリティを向上させる取り組みの一環です。バッジを紛失した従業員は、すぐに警備室に報告してください。`,
+  qs: [
+    { k: "文法(態・未来)", c: ["distribute", "will be distributed", "distributing", "have distributing"], a: 1, e: "主語 The new badges は「配布される」側で、from October 25 は未来の期間なので、未来の受動態 will be distributed が正解です。" },
+    { k: "接続副詞", c: ["Therefore", "Moreover", "Instead", "Rather"], a: 1, e: "「古いバッジを持参する」に加えて「写真付きIDがないと発行できない」と条件を追加するので Moreover(さらに)。Therefore(だから)は因果、Instead / Rather は代替を表すため不適切です。" },
+    { k: "一文挿入", c: ["The cafeteria will be closed on November 1.", "The new badges include a photo and a barcode for door access.", "Many employees have asked about parking.", "The reception desk was recently renovated."], a: 1, e: "直後の This change(この変更)は新バッジの導入を指します。新バッジの特徴を説明する B が直前に入ると、This change が自然につながります。" },
+    { k: "語彙", c: ["security", "tradition", "entertainment", "revenue"], a: 0, e: "バッジの着用義務化は安全管理のための取り組みなので security(安全・警備)。tradition(伝統)/ entertainment(娯楽)/ revenue(収益)は文脈に合いません。" }
+  ] },
+{ type: "ニュース記事", title: "グリーンフィールド食品、新工場を開設へ",
+  text: `Greenfield Foods announced on Monday that it will open a new production plant in Osaka next spring. The plant, which is [1] to employ 300 workers, will produce frozen vegetables for the Asian market. [2] The company's president, Naomi Ito, said the plant would help shorten delivery times. [3], local residents have expressed concern about increased truck traffic. The company has promised to [4] this issue by building a new access road. Construction is scheduled to begin in January.`,
+  ja: `グリーンフィールド食品は月曜日、来春に大阪に新しい生産工場を開設すると発表した。この工場は300人を雇用する見込みで、アジア市場向けの冷凍野菜を生産する。投資額は4,000万ドルと見積もられている。同社の伊藤直美社長は、この工場が配送時間の短縮に役立つと述べた。しかし、地元住民はトラックの交通量の増加を懸念している。同社は、新しいアクセス道路を建設することでこの問題に対処すると約束した。建設は1月に始まる予定だ。`,
+  qs: [
+    { k: "文法(語形)", c: ["expect", "expected", "expecting", "expectation"], a: 1, e: "which is [1] to employ は「~すると見込まれている」という受動(be expected to ~)。過去分詞 expected が正解です。" },
+    { k: "一文挿入", c: ["The investment is estimated at 40 million dollars.", "Frozen vegetables are rich in vitamins.", "Ms. Ito graduated from Kyoto University.", "The old plant closed last year."], a: 0, e: "工場の概要の後で、続く社長のコメントへの橋渡しとして、投資額という新情報を加える A が自然です。B は一般論、C は経歴、D は「旧工場」が文中に登場せず不自然です。" },
+    { k: "接続副詞", c: ["Therefore", "However", "Similarly", "For example"], a: 1, e: "前文は工場が配送時間を短縮するという好意的な内容、後文は住民の懸念という反対の内容なので、逆接の However(しかしながら)が正解です。" },
+    { k: "語彙", c: ["address", "adjust", "accept", "arrange"], a: 0, e: "address には「(問題に)対処する」の意味があり、this issue を目的語にとります。adjust(調整する)/ accept(受け入れる)/ arrange(手配する)は issue との相性が悪いです。" }
+  ] },
+{ type: "広告・案内", title: "サンライズ・フィットネスクラブ　会員募集",
+  text: `Sunrise Fitness Club: Join Today!
+
+Looking to get in shape this year? Sunrise Fitness Club offers a [1] range of classes, from yoga to strength training. All of our trainers are certified professionals who will design a program that fits your goals. [2] New members who sign up before December 31 will receive their first month free. [3], the club is open 24 hours a day, so you can exercise whenever it suits your schedule. Visit our website or stop by the front desk to [4] more about our membership plans.`,
+  ja: `サンライズ・フィットネスクラブ：今すぐご入会を！
+
+今年こそ体を鍛えたいとお考えですか？サンライズ・フィットネスクラブでは、ヨガから筋力トレーニングまで、幅広いクラスをご用意しています。当クラブのトレーナーは全員認定を受けた専門家で、あなたの目標に合ったプログラムを作成します。現在、特別キャンペーンを実施中です。12月31日までに入会された新規会員の方は、最初の1か月が無料になります。さらに、クラブは24時間営業ですので、ご都合に合わせていつでも運動できます。会員プランの詳細は、ウェブサイトをご覧いただくか、フロントまでお越しください。`,
+  qs: [
+    { k: "文法(品詞)", c: ["wide", "widely", "widen", "width"], a: 0, e: "冠詞 a と名詞 range の間なので形容詞 wide(幅広い)が入ります。a wide range of ~ で「幅広い~」です。" },
+    { k: "一文挿入", c: ["We are currently running a special promotion.", "The club was founded in 2005.", "Our parking lot has 80 spaces.", "Yoga mats are available for sale."], a: 0, e: "直後の文が「新規会員は初月無料」というお得な内容なので、特別キャンペーン中であることを述べる A が導入として最適です。他は直後の内容とつながりません。" },
+    { k: "接続副詞", c: ["Otherwise", "In addition", "Nevertheless", "Instead"], a: 1, e: "トレーナーやキャンペーンの利点に、24時間営業という利点を付け加えるので In addition(さらに)。Otherwise / Nevertheless / Instead は文意に合いません。" },
+    { k: "語彙", c: ["learn", "teach", "lend", "hold"], a: 0, e: "「会員プランについてもっと知る」は learn more about ~。teach(教える)/ lend(貸す)/ hold(開催する・持つ)は more about ~ と結びつきません。" }
+  ] }
+];
+
+// ===== ロジック =====
+const $ = (id) => document.getElementById(id);
+const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const L = "ABCD";
+let timerSec = 0, mode = "single", list = [], pi = 0, qi = 0, ans = [], spent = [], timedOut = [], timerId = null, t0 = 0;
+
+function go(n) { ["home", "quiz", "end"].forEach(s => $(s).classList.toggle("hide", s !== n)); window.scrollTo(0, 0); }
+
+function start() {
+  const pool = shuffle(PASSAGES);
+  list = mode === "single" ? pool.slice(0, 1) : pool.slice(0, Math.min(4, pool.length));
+  ans = list.map(() => [-1, -1, -1, -1]); spent = []; timedOut = []; pi = 0;
+  go("quiz"); showPassage();
+}
+
+function showPassage() {
+  clearInterval(timerId); qi = 0;
+  const p = list[pi];
+  $("pLabel").textContent = "文章 " + (pi + 1) + " / " + list.length + "　" + p.type;
+  $("pTitle").textContent = p.title;
+  drawText(); renderQ();
+  t0 = Date.now();
+  const badge = $("timerBadge");
+  if (timerSec > 0) {
+    const dl = t0 + timerSec * 1000;
+    badge.classList.remove("hide", "warn");
+    const tick = () => {
+      const left = Math.max(0, Math.ceil((dl - Date.now()) / 1000));
+      badge.textContent = "⏱️ " + Math.floor(left / 60) + ":" + String(left % 60).padStart(2, "0");
+      if (left <= 30) badge.classList.add("warn");
+      if (left <= 0) { clearInterval(timerId); endPassage(true); }
+    };
+    tick(); timerId = setInterval(tick, 250);
+  } else badge.classList.add("hide");
+}
+
+function drawText() {
+  const p = list[pi];
+  $("passage").innerHTML = p.text.replace(/\[(\d)\]/g, (m, n) => {
+    const i = n - 1;
+    return '<span class="blank' + (i === qi ? " cur" : "") + (ans[pi][i] >= 0 ? " done" : "") + '" data-i="' + i + '">[ ' + n + ' ]</span>';
+  }).replace(/\n/g, "<br>");
+  const c = $("passage").querySelector(".cur");
+  if (c) c.scrollIntoView({ block: "nearest" });
+}
+
+function renderQ() {
+  const q = list[pi].qs[qi];
+  $("qLabel").textContent = "空欄 [ " + (qi + 1) + " ] / 4　(" + q.k + ")";
+  const box = $("options"); box.innerHTML = "";
+  q.c.forEach((t, i) => {
+    const b = document.createElement("button");
+    b.className = "opt" + (ans[pi][qi] === i ? " sel" : "");
+    b.textContent = "(" + L[i] + ") " + t;
+    b.onclick = () => { ans[pi][qi] = i; drawText(); renderQ(); };
+    box.appendChild(b);
+  });
+  $("prev").disabled = qi === 0; $("nxt").disabled = qi === 3;
+  const f = $("fin");
+  f.classList.toggle("hide", !ans[pi].every(x => x >= 0));
+  f.textContent = pi < list.length - 1 ? "次の文章へ" : "採点する";
+}
+
+function move(d) { qi += d; drawText(); renderQ(); }
+
+function endPassage(to) {
+  clearInterval(timerId);
+  spent[pi] = Math.round((Date.now() - t0) / 1000); timedOut[pi] = !!to;
+  if (pi < list.length - 1) { pi++; showPassage(); } else finish();
+}
+
+function finish() {
+  clearInterval(timerId); go("end");
+  const total = list.length * 4;
+  let score = 0; list.forEach((p, k) => p.qs.forEach((q, i) => { if (ans[k][i] === q.a) score++; }));
+  const sec = spent.reduce((a, b) => a + b, 0);
+  $("score").textContent = score + " / " + total;
+  $("pct").textContent = "正解率 " + Math.round(score / total * 100) + "%";
+  $("tm").textContent = "⏱️ かかった時間 " + Math.floor(sec / 60) + "分" + (sec % 60) + "秒";
+  let h = "";
+  list.forEach((p, k) => {
+    const filled = p.text.replace(/\[(\d)\]/g, (m, n) => '<b class="fill">' + p.qs[n - 1].c[p.qs[n - 1].a] + "</b>").replace(/\n/g, "<br>");
+    h += '<div class="rv"><h3>文章' + (k + 1) + "：" + p.title + (timedOut[k] ? "（⏱️時間切れ）" : "") + '</h3><div class="rbox">' + filled + '</div><div class="rbox"><b>全訳</b><br>' + p.ja.replace(/\n/g, "<br>") + "</div>";
+    p.qs.forEach((q, i) => {
+      const u = ans[k][i], ok = u === q.a;
+      h += '<div class="rq ' + (ok ? "ok" : "ng") + '"><b>' + (ok ? "⭕" : "❌") + " [" + (i + 1) + "] " + q.k + "</b><br>正解：(" + L[q.a] + ") " + q.c[q.a] + "<br>あなたの解答：" + (u >= 0 ? "(" + L[u] + ") " + q.c[u] : "未解答") + "<br>" + q.e + "</div>";
+    });
+    h += "</div>";
+  });
+  $("review").innerHTML = h;
+}
+
+// ===== イベント =====
+document.addEventListener("click", (e) => {
+  const t = e.target.closest(".t-btn");
+  if (t) { document.querySelectorAll(".t-btn").forEach(x => x.classList.remove("active")); t.classList.add("active"); timerSec = Number(t.dataset.t); return; }
+  const m = e.target.closest("[data-mode]");
+  if (m) { document.querySelectorAll("[data-mode]").forEach(x => x.classList.remove("sel")); m.classList.add("sel"); mode = m.dataset.mode; return; }
+  const b = e.target.closest(".blank");
+  if (b) { qi = Number(b.dataset.i); drawText(); renderQ(); }
+});
+$("start").onclick = start;
+$("prev").onclick = () => move(-1);
+$("nxt").onclick = () => move(1);
+$("fin").onclick = () => endPassage(false);
+$("back").onclick = () => { if (confirm("トップに戻りますか？\n進行中の結果は失われます。")) { clearInterval(timerId); go("home"); } };
+$("retry").onclick = start;
+$("toHome").onclick = () => go("home");
+$("mockDesc").textContent = Math.min(4, PASSAGES.length) + "文章(" + Math.min(4, PASSAGES.length) * 4 + "問)を連続で解く本番形式";
+timerSec = Number(document.querySelector(".t-btn.active").dataset.t);
+go("home");
