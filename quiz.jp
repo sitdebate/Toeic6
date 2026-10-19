@@ -1,6 +1,1128 @@
 // ===== Part 6 問題データ（PASSAGES 配列に文章を追加していけます）=====
 // text 中の [1]〜[4] が空欄。qs の a は正解の番号（0=A, 1=B, 2=C, 3=D）。
 const PASSAGES = [
+// ===== ブロック 1 (文章 1 ～ 40) =====
+
+// --- ビジネスメール (20文章) ---
+{ type: "ビジネスメール", title: "件名：契約書の確認依頼",
+  text: `Dear Mr. Vance,
+
+I have attached the updated contract for the Westside project. Please review the terms, [1] the section regarding the project completion timeline. We have extended the deadline by two weeks, as [2] in our last telephone conversation. If all details are acceptable, kindly sign the document and send it back to us [3] Friday. [4] Should you require any modifications before signing, please let me know.
+
+Best regards,
+Karen White
+White & Associates`,
+  ja: `ヴァンス様
+
+ウエストサイドプロジェクトの更新された契約書を添付いたしました。プロジェクト完了までの期間に関する項目を中心に、条件をご確認ください。前回のお電話でお話ししました通り、締め切りを2週間延長いたしました。すべての詳細にご納得いただけましたら、書類にご署名の上、金曜日までにご返送ください。なお、署名前に変更が必要な箇所がございましたら、お知らせください。
+
+よろしくお願いいたします。
+カレン・ホワイト
+ホワイト＆アソシエイツ`,
+  qs: [
+    { k: "接続詞/前置詞", c: ["especially", "despite", "whereas", "unless"], a: 0, e: "「特定の部分（期間の項目）を特に確認してほしい」という意味なので、副詞 especially(特に) が適切です。" },
+    { k: "文法(態・過去分詞)", c: ["discuss", "discussed", "discussing", "discussion"], a: 1, e: "as discussed (議論された通り) という過去分詞を用いた定型表現です。" },
+  { k: "前置詞", c: ["until", "by", "for", "during"], a: 1, e: "「金曜日までに（提出・返送の期限）」を表すので、期限を示す by が正解です。until は継続を表します。" },
+    { k: "一文挿入", c: ["The payment has already been processed.", "We look forward to working with your team again.", "Should you require any modifications before signing, please let me know.", "Our main office will be closed next week."], a: 2, e: "直前の「納得がいけば署名して返送してください」に対して、「もし修正が必要なら連絡を」と条件を付け加える C が最もスムーズにつながります。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：出張費用の精算について",
+  text: `To: All Sales Staff
+From: Accounting Department
+Subject: Travel Expense Reports
+
+This is a reminder that all expense reports for business trips taken in September must be [1] by October 15. Please ensure that all original receipts are attached to your claim form. Expenses without valid receipts will not be [2]. [3] Late submissions may result in a delay of your reimbursement. [4], please use the new digital form available on the company intranet for all future claims.`,
+  ja: `宛先：営業部社員各位
+差出人：経理部
+件名：出張費精算書について
+
+9月に行われた出張の経理精算書は、10月15日までに提出する必要があることを再度お知らせいたします。申請用紙にはすべての領収書の原本が添付されていることをご確認ください。有効な領収書がない費用は払い戻されません。提出が遅れた場合、払い戻しが遅れる可能性があります。なお、今後の申請には、会社のイントラネットで利用可能な新しいデジタルフォームをご使用ください。`,
+  qs: [
+    { k: "語彙", c: ["submitted", "canceled", "calculated", "performed"], a: 0, e: "精算書を「提出する」という意味の submitted が正解です。" },
+    { k: "語彙(動詞)", c: ["reimbursed", "purchased", "accepted", "invested"], a: 0, e: "「費用が払い戻されない」という意味になる reimbursed (払い戻す) が文脈に合致した受動態です。" },
+    { k: "一文挿入", c: ["Sales performance was excellent last month.", "Late submissions may result in a delay of your reimbursement.", "The accounting office is located on the second floor.", "Please inform us if you need to travel next week."], a: 1, e: "領収書の添付義務を述べた後、期限に遅れた際のリスク（払い戻しの遅れ）を警告する B が自然です。" },
+    { k: "接続副詞", c: ["However", "Furthermore", "Otherwise", "Therefore"], a: 1, e: "提出期限の注意点に加えて、「さらに新しいフォームを使って」と補足情報を追加するので Furthermore(さらに) が正解です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：ITシステムメンテナンスの事前通知",
+  text: `To: All Department Heads
+From: IT Support Team
+Subject: Scheduled System Maintenance
+
+Please be advised that our primary database server will undergo routine maintenance this Saturday, August 12, from 10:00 P.M. to 4:00 A.M. [1] this time, access to the customer portal and company email will be temporarily [2]. We recommend saving all your work and logging out before the maintenance period begins. [3] We apologize for any inconvenience this necessary work may cause. If you have urgent technical concerns, please contact IT support before 5:00 P.M. on [4].`,
+  ja: `宛先：各部門長各位
+差出人：ITサポートチーム
+件名：定期システムメンテナンスのお知らせ
+
+8月12日（土）午後10時から午前4時まで、定期メンテナンスのためプライマリデータベースサーバーの保守を行います。この間、カスタマーポータルおよび社内メールへのアクセスが一時的に停止されます。メンテナンス期間が始まる前に、すべての作業を保存してログアウトすることをお勧めします。この必要な作業によってご迷惑をおかけすることを深くお詫び申し上げます。緊急の技術的ご懸念がございましたら、金曜日の午後5時までにITサポートまでご連絡ください。`,
+  qs: [
+    { k: "前置詞", c: ["During", "While", "Through", "At"], a: 0, e: "this time という名詞句が続くため、期間を表す前置詞 During が正解です。（While は接続詞で S+V が続く）" },
+    { k: "語彙", c: ["suspended", "expanded", "promoted", "constructed"], a: 0, e: "アクセスが一時的に「停止される」という意味の suspended が文脈上合致します。" },
+    { k: "一文挿入", c: ["New laptops will be distributed next week.", "We apologize for any inconvenience this necessary work may cause.", "The cafeteria menu has been updated.", "Server upgrades are very expensive."], a: 1, e: "システムの停止という不便をかける案内に対して、お詫びを述べる B が完璧に適しています。" },
+    { k: "語彙(曜日名詞)", c: ["Friday", "Sunday", "Monday", "Saturday"], a: 0, e: "土曜夜のメンテナンス前（平日の最後）に連絡するよう促しているため Friday が論理的です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：採用面接の日程調整",
+  text: `Dear Ms. Chen,
+
+Thank you for applying for the Senior Analyst position at Apex Financial. We were very [1] with your resume and qualifications, and we would like to invite you for an interview. The interview will take place at our headquarters in Chicago. [2] Could you please let us know if you are [3] on Thursday, November 10, at 2:00 P.M.? If this time is inconvenient, please suggest two or three alternative times. We look forward to [4] you soon.
+
+Sincerely,
+Mark Davis
+Recruitment Manager`,
+  ja: `チェン様
+
+エイペックス・フィナンシャルのシニアアナリスト職にご応募いただきありがとうございます。あなたの履歴書と資格拝見し、大変感銘を受けました。つきましては、面接にお越しいただきたく存じます。面接はシカゴの本社で行われます。11月10日（木）の午後2時でお時間は調整可能でしょうか。ご都合が悪い場合は、代替可能な候補日時を2～3お知らせください。近いうちにお会いできることを楽しみにしております。
+
+敬具
+マーク・デイビス
+採用マネージャー`,
+  qs: [
+    { k: "語彙/品詞", c: ["impressed", "impression", "impressive", "impress"], a: 0, e: "「人が感銘を受ける」という意味の過去分詞/形容詞 impressed が正解です。" },
+    { k: "一文挿入", c: ["Your application was unfortunately rejected.", "Please bring three copies of your portfolio.", "The position has already been filled.", "Our office in London is growing quickly."], a: 1, e: "面接場所を伝えた後、準備物（ポートフォリオのコピー3部）の持参を求める B が自然に繋がります。" },
+    { k: "語彙(形容詞)", c: ["available", "capable", "favorable", "durable"], a: 0, e: "「都合がつく・対応可能である」を意味する available が正解です。" },
+    { k: "文法(動名詞)", c: ["meeting", "meet", "met", "to meet"], a: 0, e: "look forward to の to は前置詞なので、後ろには動名詞 meeting が入ります。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：ケータリングサービスのお見積り",
+  text: `Dear Mr. Miller,
+
+Thank you for reaching out to Delicious Catering. Per your request, I have prepared a preliminary price quote for your upcoming corporate dinner on May 15. The total cost includes food preparation, service staff, and cleanup. [1] Please note that a 20 percent deposit is required to [2] your booking. This deposit must be paid by April 30. [3], any changes to the guest count must be finalized at least 48 hours prior to the event. We are eager to [4] your guests a memorable experience.
+
+Best regards,
+Lisa Ray`,
+  ja: `ミラー様
+
+デリシャス・ケータリングにお問い合わせいただきありがとうございます。ご要望通り、5月15日の貴社の社内晩餐会に向けた概算見積書を作成いたしました。合計金額には調理、サービススタッフ、後片付けが含まれております。予約を確定させるには、20パーセントの前払い金が必要となりますのでご注意ください。前払い金は4月30日までに支払われる必要があります。さらに、参加人数の変更はイベントの少なくとも48時間前までに確定していただく必要があります。ゲストの皆様に素晴らしい体験を提供できることを楽しみにしております。`,
+  qs: [
+    { k: "一文挿入", c: ["Please note that a 20 percent deposit is required to confirm your booking.", "Our restaurant serves Italian food exclusively.", "The weather forecast predicts rain on May 15.", "Thank you for attending last week's seminar."], a: 0, e: "見積もりと予約手続きの流れにおいて、手付金（デポジット）の必要性を案内する A が最適です。" },
+    { k: "語彙", c: ["confirm", "cancel", "replace", "postpone"], a: 0, e: "「予約を確定する」という意味の confirm が正解です。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "For instance"], a: 0, e: "前払い金の条件に加えて「人数の確定時期」という追加条件を提示するため Additionally(さらに) が正解です。" },
+    { k: "語彙", c: ["provide", "deny", "borrow", "forget"], a: 0, e: "provide A B (AにBを提供する) という動詞表現が文脈に合致します。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：オフィス機器の不具合について",
+  text: `Dear Helpdesk Team,
+
+I am writing to report a problem with the color printer on the 4th floor. The machine keeps [1] paper whenever we try to print large documents. This issue has been occurring [2] Tuesday morning. [3] Because several team members need to print presentation materials for an upcoming client meeting, a quick resolution would be greatly [4]. Could someone please inspect the printer as soon as possible?
+
+Thank you,
+Susan Brody`,
+  ja: `ヘルプデスクチーム御中
+
+4階のカラープリンターの不具合を報告するためにご連絡いたしました。大きな書類を印刷しようとするたびに、機械が紙詰まりを起こしてしまいます。この問題は火曜日の朝からずっと続いています。チームの数名が近く行われる顧客会議のためのプレゼン資料を印刷する必要があるため、迅速な対応をしていただけますと大変助かります。至急プリンターの点検を行っていただけますでしょうか。
+
+よろしくお願いいたします。
+スーザン・ブロディ`,
+  qs: [
+    { k: "語彙(動詞)", c: ["jamming", "copying", "folding", "scanning"], a: 0, e: "プリンターの紙詰まりを表す jam paper (紙を詰まらせる) の動名詞形式 jamming が正解です。" },
+    { k: "前置詞", c: ["since", "for", "from", "during"], a: 0, e: "「火曜朝以来ずっと（現在完了進行形とともに用いる）」を指すため since が正解です。" },
+    { k: "一文挿入", c: ["We have decided to purchase a new desk instead.", "Because several team members need to print presentation materials, a quick resolution would be greatly appreciated.", "The meeting room has already been booked.", "Please send the report via email."], a: 1, e: "不具合報告に続けて「急ぎで直してほしい理由（会議資料の印刷が必要）」を述べる B が自然です。" },
+    { k: "語彙(形容詞)", c: ["appreciated", "rejected", "ignored", "postponed"], a: 0, e: "「迅速な対応をしてくれれば大変ありがたい」を意味する greatly appreciated が正解です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：年間契約更新のお知らせ",
+  text: `Dear Valued Customer,
+
+Your annual subscription for CleanWeb Security Solutions is set to [1] on December 31. To ensure uninterrupted protection for your network, we recommend renewing your account today. [2] If you choose to renew before November 30, you will automatically receive a 15 percent discount on the standard yearly rate. [3], no action is required if you have enabled automatic billing in your account settings. Thank you for [4] CleanWeb for your cybersecurity needs.
+
+Sincerely,
+Customer Loyalty Team`,
+  ja: `大切なお客様へ
+
+CleanWebセキュリティソリューションの年間サブスクリプション契約は、12月31日に期限切れとなる予定です。ネットワークの保護が中断されないよう、本日アカウントを更新することをお勧めします。11月30日までに更新をお選びいただきますと、標準年間料金の15パーセント割引が自動的に適用されます。なお、アカウント設定で自動請求を有効にされている場合は、お手続きは不要です。サイバーセキュリティのニーズにCleanWebをお選びいただき、ありがとうございます。`,
+  qs: [
+    { k: "語彙", c: ["expire", "commence", "expand", "succeed"], a: 0, e: "「契約の期限が切れる」を意味する expire が最適です。" },
+    { k: "一文挿入", c: ["If you choose to renew before November 30, you will receive a 15 percent discount.", "Our office will be moving to a new address next month.", "The service was temporarily interrupted yesterday.", "Please return the software installation disk."], a: 0, e: "更新の推奨に続けて、早めの更新に伴うインセンティブ（割引）を説明する A が自然です。" },
+    { k: "接続副詞", c: ["However", "Additionally", "Otherwise", "Therefore"], a: 0, e: "「早めの手続きを促す文言」に対して「自動更新を有効にしているなら例外で何も不要」と反転・補足するため However(ただし) が適しています。" },
+    { k: "文法(動名詞)", c: ["choosing", "chose", "chosen", "choose"], a: 0, e: "前置詞 for の後ろなので動名詞 choosing が入ります。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：新製品サンプル送付のご案内",
+  text: `Dear Ms. Patel,
+
+Following up on our conversation at the Trade Expo last week, I am pleased to send you samples of our new line of eco-friendly packaging materials. [1] These products are designed to be fully biodegradable [2] maintaining high durability. Many of our corporate clients have reported a significant [3] in packaging waste after switching to our solutions. [4], I have enclosed a product catalog detailing prices and bulk order discounts. I will call you next Tuesday to hear your feedback.
+
+Sincerely,
+Kenji Sato
+EcoPack Technologies`,
+  ja: `パテル様
+
+先週のトレードエキスポでの会話に続き、当社の環境に優しい新しい包装資材サンプルの送付をお知らせいたします。これらの製品は高い耐久性を維持しながら、完全に生分解されるように設計されています。当社のソリューションに切り替えた後、多くの法人顧客が包装廃棄物の大幅な削減を報告しています。さらに、価格やまとめ買い割引をまとめた商品カタログを同封いたしました。ご意見をお伺いするため、来週の火曜日に電話させていただきます。
+
+敬具
+佐藤健司
+エコパック・テクノロジーズ`,
+  qs: [
+    { k: "一文挿入", c: ["These products are designed to be fully biodegradable.", "We are sorry that the expo was canceled.", "The catalog is currently out of print.", "Please return the sample after testing."], a: 0, e: "サンプル送付の案内に続けて、その製品の特徴（環境負荷の低さ・生分解性）を説明する A が自然です。" },
+    { k: "接続詞", c: ["while", "during", "despite", "because"], a: 0, e: "後ろに動詞のing形 (maintaining) が続く分子構文的な接続詞表現として while (〜しつつ) が正解です。" },
+    { k: "語彙", c: ["reduction", "expansion", "addition", "construction"], a: 0, e: "環境配慮型の包装により廃棄物が「削減された」という意味の reduction が適しています。" },
+    { k: "接続副詞", c: ["Additionally", "On the other hand", "Otherwise", "In contrast"], a: 0, e: "サンプルの紹介に加え、「さらにカタログも同封した」と追加情報を添えるため Additionally が正解です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：セミナー参加への御礼",
+  text: `Dear Participant,
+
+Thank you for attending the Leadership Development Workshop hosted by Global Consulting Solutions. We hope you found the presentations and group discussions [1]. To help us improve future events, we would appreciate it if you could complete a brief feedback survey. [2] The survey should take no more than five minutes to [3]. As a token of our appreciation, respondents will receive a complimentary copy of our latest industry report. We value your [4] and hope to see you at our next event.
+
+Best regards,
+Event Coordination Team`,
+  ja: `参加者各位
+
+グローバル・コンサルティング・ソリューションズ主催のリーダーシップ開発ワークショップにご参加いただきありがとうございました。プレゼンテーションやグループディスカッションが有意義なものであったことを願っております。今後のイベント改善に役立てるため、簡単なフィードバック調査にご協力いただけますと幸いです。調査の完了には5分もかかりません。感謝の印として、ご回答者様には当社の最新業界レポートの進呈品をお送りいたします。皆様のご意見を大切にし、また次のイベントでお会いできることを楽しみにしております。`,
+  qs: [
+    { k: "語彙(形容詞)", c: ["informative", "confusing", "expensive", "temporary"], a: 0, e: "セミナーの内容が「有意義な・ためになる」という意味の informative が正解です。" },
+    { k: "一文挿入", c: ["The survey should take no more than five minutes to complete.", "The venue was larger than expected.", "We have canceled the upcoming workshop.", "Please pay the registration fee online."], a: 0, e: "アンケート協力の依頼に続けて、所要時間の短さ（5分以内）を伝える A がスムーズです。" },
+    { k: "語彙(動詞)", c: ["complete", "compete", "complicate", "combine"], a: 0, e: "「アンケートを記入・完了する」という意味の complete が正解です。" },
+    { k: "語彙(名詞)", c: ["feedback", "equipment", "permission", "allowance"], a: 0, e: "「皆様からのフィードバック・ご意見」を指す feedback が適しています。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：請求書金額の誤りについて",
+  text: `Dear Billing Department,
+
+I received Invoice #4092 for our monthly office supply order today. Upon reviewing the charges, I noticed a discrepancy in the itemized list. [1] We were charged for ten boxes of printer paper, but we only [2] six boxes. [3] I have attached a copy of the delivery slip signed by your driver as proof. Could you please issue a [4] invoice reflecting the correct amount at your earliest convenience?
+
+Sincerely,
+Gary Vance
+Logistics Manager`,
+  ja: `請求担当部署御中
+
+本日、毎月のオフィス用品注文に関する請求書#4092を受領いたしました。請求内容を確認したところ、明細一覧に不一致があることに気付きました。プリンター用紙10箱分が請求されていますが、実際に受領したのは6箱のみでした。証拠として、ドライバーの方の署名が入った納品書のコピーを添付いたしました。正しい金額を反映した修正請求書を至急発行していただけますでしょうか。
+
+よろしくお願いいたします。
+ゲイリー・ヴァンス
+物流マネージャー`,
+  qs: [
+    { k: "一文挿入", c: ["We were charged for ten boxes of printer paper, but we only received six.", "The paper quality was better than expected.", "We would like to order more paper next week.", "Thank you for sending the payment so quickly."], a: 0, e: "請求金額の不一致（discrepancy）を具体的に説明する A が正解です。" },
+    { k: "語彙", c: ["received", "manufactured", "discarded", "advertised"], a: 0, e: "「6箱しか受け取っていない」という意味になる received が合致します。" },
+    { k: "一文挿入(実質接続/根拠提示)", c: ["I have attached a copy of the delivery slip as proof.", "Our office is moving to a new location.", "Please call me back when you are free.", "The paper is stored in the supply room."], a: 0, e: "誤りの指摘に続き、その根拠として受領印付き受領書の添付を伝える A が適しています。" },
+    { k: "語彙(形容詞)", c: ["revised", "canceled", "original", "delayed"], a: 0, e: "金額を直した「修正済みの」請求書を依頼するため revised が正解です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：新規不動産物件のご案内",
+  text: `Dear Mr. Higgins,
+
+Based on your specified criteria, I have identified a commercial space that matches your requirements. The property is conveniently [1] near the central train station, offering high foot traffic and excellent visibility. [2] The building was recently renovated and includes modern amenities. [3], the monthly rent is well within your budget limit. Please let me know if you are interested in scheduling a [4] of the site later this week.
+
+Best,
+Rachel Adams
+Apex Realty`,
+  ja: `ヒギンズ様
+
+ご指定いただいた条件に基づき、ご要望に合う商業用物件を特定いたしました。当物件は中央駅の近くに非常に便利な場所に位置しており、人通りが多く視認性にも優れております。建物は最近改修されたばかりで、最新の設備を備えています。さらに、月額賃料もお申し出の予算内に十分に収まっております。今週後半に現地内覧のご予約をご希望される場合は、お知らせください。
+
+よろしくお願いいたします。
+レイチェル・アダムズ
+エイペックス不動産`,
+  qs: [
+    { k: "語彙(動詞受動形)", c: ["located", "situated", "occupied", "visited"], a: 0, e: "場所が「位置している」を表す conveniently located が定番表現です。" },
+    { k: "一文挿入", c: ["The building was recently renovated and includes modern amenities.", "Residential properties are currently unavailable.", "The station is going to be rebuilt next year.", "We have sold similar properties recently."], a: 0, e: "立地の良さに続き、物件自体の魅力（最近のリノベーション）を説明する A が接続として最適です。" },
+    { k: "接続副詞", c: ["In addition", "However", "Otherwise", "For example"], a: 0, e: "立地・設備という利点に加えて「家賃の安さ」も加えるため In addition が正解です。" },
+    { k: "語彙(名詞)", c: ["viewing", "construction", "sale", "purchase"], a: 0, e: "「物件の現地内覧」を指す a viewing of the site が合致します。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：社内イベント（BBQ）の参加確認",
+  text: `Hi Everyone,
+
+The annual company picnic is just around the corner! This year, we will be gathering at Lakeview Park on Saturday, June 24, starting at 11:30 A.M. [1] Food and beverages will be provided, but you are welcome to bring games or sports equipment. [2] To ensure we purchase enough supplies, please RSVP by filling out the online form by June 15. [3], family members are invited to join the event. We look forward to a fun day together!
+
+Best,
+The Social Committee`,
+  ja: `社員の皆様
+
+例年恒例の社内親睦ピクニックが近づいてまいりました！今年は6月24日（土）午前11時30分よりレイクビュー・パークにて開催いたします。お食事とお飲み物はご用意いたしますが、ゲームやスポーツ用品の持ち込みも大歓迎です。十分な物資を購入するため、6月15日までにオンラインフォームで参加可否（RSVP）をご回答ください。さらに、ご家族の皆様のご参加も歓迎いたします。皆様と楽しい一日を過ごせることを楽しみにしております！`,
+  qs: [
+    { k: "一文挿入", c: ["Food and beverages will be provided by the committee.", "The office will remain open during the weekend.", "Please turn in your budget proposals today.", "Rain is expected throughout the month."], a: 0, e: "イベントの場所と日時の案内に続き、食事の提供について触れる A がスムーズです。" },
+    { k: "文法(目的を表す不定詞)", c: ["To ensure", "Ensuring", "Ensured", "Ensure"], a: 0, e: "「〜を確実にするために」という目的を表す To + 動詞の原形 (To ensure) が正解です。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "Therefore"], a: 0, e: "参加確認の案内に加え、「家族も参加可能」という追加情報を添えるため Additionally が適しています。" },
+    { k: "語彙", c: ["invited", "rejected", "forced", "forbidden"], a: 0, e: "「（参加者として）招待・歓迎されている」を意味する invited が正解です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：ウェブサイト一時障害のお詫び",
+  text: `Dear Valued Clients,
+
+We experienced an unexpected server outage this morning between 8:00 A.M. and 9:30 A.M. that caused our online booking platform to become [1]. Our technical engineers resolved the issue promptly, and all services have been fully [2]. [3] No customer data or financial information was compromised during the incident. We sincerely apologize for any inconvenience this disruption may have caused to your operations. Thank you for your continued [4] and understanding.
+
+Sincerely,
+Apex Cloud Services`,
+  ja: `大切なお客様へ
+
+本日午前8時00分から午前9時30分の間、予期せぬサーバー障害が発生し、当社のオンライン予約プラットフォームが利用できない状態となりました。技術エンジニアが迅速に問題を解決し、すべてのサービスは完全に復旧いたしました。なお、障害発生中に顧客データや財務情報が外部に流出・漏洩した事実はございません。この中断により貴社の業務にご迷惑をおかけしましたことを心よりお詫び申し上げます。変わらぬご支援とご理解に感謝申し上げます。`,
+  qs: [
+    { k: "語彙(形容詞)", c: ["unavailable", "profitable", "convenient", "flexible"], a: 0, e: "障害によりシステムが「利用不能になった」ため unavailable が正解です。" },
+    { k: "語彙(動詞受動態)", c: ["restored", "canceled", "rejected", "postponed"], a: 0, e: "サービスが完全に「復旧・元通りにされた」ことを意味する restored が合致します。" },
+    { k: "一文挿入", c: ["No customer data was compromised during the incident.", "We are launching a new marketing campaign today.", "The office will be closed for the holidays.", "Please update your password every month."], a: 0, e: "システムの復旧報告に続き、セキュリティ上の安全（データ非漏洩）を明言する A が適切です。" },
+    { k: "語彙(名詞)", c: ["support", "refusal", "competition", "complaint"], a: 0, e: "感謝を伝える定型表現「変わらぬご支援（continued support）」が正解です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：ワークショップ講師の依頼",
+  text: `Dear Dr. Kim,
+
+On behalf of the National Marketing Association, I would like to invite you to be a keynote speaker at our annual conference in Boston. The event will be held on September 22. Given your extensive [1] in digital branding, we believe our attendees would benefit greatly from your insights. [2] The association will cover all travel and accommodation expenses. [3], we offer an honorarium for all guest speakers. Please let us know by July 15 if you are [4] to accept this invitation.
+
+Warm regards,
+David Miller`,
+  ja: `キム博士へ
+
+全国マーケティング協会を代表いたしまして、ボストンで開催される年次カンファレンスでの基調講演者としてお招きしたくご連絡申し上げました。イベントは9月22日に開催されます。デジタルブランディングに関する博士の広範な専門知識を考慮しますと、参加者は博士の知見から大きな恩恵を受けるものと確信しております。協会が交通費および宿泊費の全額を負担いたします。さらに、すべての招待講師には謝礼金をご用意しております。この招待をお受けいただけるかどうか、7月15日までにお知らせいただけますと幸いです。`,
+  qs: [
+    { k: "語彙(名詞)", c: ["expertise", "expense", "excursion", "exercise"], a: 0, e: "「専門的知識・経験」を意味する不可算名詞 expertise が正解です。" },
+    { k: "一文挿入", c: ["The association will cover all travel and accommodation expenses.", "The conference was canceled due to low attendance.", "You can purchase tickets on our website.", "Please submit your article to the journal."], a: 0, e: "登壇依頼の文脈において、講演条件（旅費・宿泊費の支給）を提示する A が最も自然です。" },
+    { k: "接続副詞", c: ["In addition", "However", "Otherwise", "Therefore"], a: 0, e: "旅費支給の利点に加えて「謝礼金の提供」というプラス条件を追加するため In addition が合致します。" },
+    { k: "語彙(形容詞)", c: ["willing", "hesitant", "reluctant", "unlikely"], a: 0, e: "be willing to ~ (快く〜する・意思がある) の定型構成です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：社内規定（在宅勤務）改定の案内",
+  text: `To: All Employees
+From: Management
+Subject: Revised Remote Work Policy
+
+Effective June 1, the company will implement a updated remote work policy. Under the new rules, eligible staff may work from home up to two days per week with manager approval. [1] Employees wishing to participate must complete a formal application form. [2] This initiative aims to promote a better work-life balance while maintaining [3] productivity levels. [4], remote workers must ensure they have a secure internet connection. Thank you for your cooperation in making this program successful.`,
+  ja: `全社員各位
+差出人：経営陣
+件名：在宅勤務規定の改定について
+
+6月1日より、更新された在宅勤務規定を実施いたします。新ルールの下では、対象となる社員は上司の承認を得た上で、週に最大2日まで在宅勤務が可能となります。参加を希望する社員は、正式な申請書を提出する必要があります。この取り組みは、生産性レベルを維持しつつ、より良いワークライフバランスを促進することを目的としています。なお、リモートワーカーは安全なインターネット接続を確保しなければなりません。本プログラム成功のためのご協力をお願いいたします。`,
+  qs: [
+    { k: "一文挿入", c: ["Employees wishing to participate must complete a formal application form.", "The office building will be repainted next month.", "Working hours have been extended until 8 P.M.", "Parking fees will be increased starting tomorrow."], a: 0, e: "新ルールの概要説明に続き、申請手続きに関する指示を述べる A が適切です。" },
+    { k: "目的の不定詞/接続", c: ["This initiative aims to promote a better work-life balance.", "We are closing the business permanently.", "All office equipment must be returned today.", "Salaries will be paid on the 25th."], a: 0, e: "制度変更の目的（ワークライフバランスの向上）を説明する A が自然です。" },
+    { k: "語彙(形容詞)", c: ["high", "highly", "height", "heighten"], a: 0, e: "名詞 productivity levels を修飾する形容詞 high が入ります。" },
+    { k: "接続副詞", c: ["Additionally", "Instead", "On the contrary", "Otherwise"], a: 0, e: "利用条件に加えて「セキュリティ環境の確保」という注意事項を補足追加するため Additionally が適しています。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：新任マネージャーのご紹介",
+  text: `To: Marketing Department
+From: Executive Office
+Subject: Announcement of New Marketing Manager
+
+We are pleased to announce that Ms. Olivia Taylor will be joining our company as the new Marketing Manager, starting Monday, November 3. Ms. Taylor brings over twelve years of industry experience, most [1] as the Director of Brand Strategy at Vertex Corporation. [2] Her impressive background in digital marketing will be a great asset as we expand into new markets. [3] Please join us for a welcome reception in the main conference room at 9:00 A.M. on her first day. We are excited to [4] her to the team!`,
+  ja: `マーケティング部各位
+差出人：役員室
+件名：新マーケティングマネージャー着任のお知らせ
+
+11月3日（月）より、オリヴィア・テイラー氏が新しいマーケティングマネージャーとして当社に入社することとなりましたのでお知らせいたします。テイラー氏は12年以上の業界経験を持ち、直近ではバーテックス・コーポレーションでブランド戦略ディレクターを務めておられました。デジタルマーケティングにおける彼女の素晴らしい経歴は、当社が新市場へ進出するにあたり大きな強みとなるでしょう。初日の午前9時より、メイン会議室にて歓迎レセプションを行いますのでぜひご参加ください。彼女をチームに迎えることを心より楽しみにしております！`,
+  qs: [
+    { k: "語彙/副詞", c: ["recently", "finally", "rarely", "nearly"], a: 0, e: "職歴の中で「直近では・最近では」を表す most recently が最適です。" },
+    { k: "一文挿入", c: ["Her impressive background will be a great asset as we expand into new markets.", "She has decided to decline the job offer.", "The marketing department will be reduced in size.", "We are moving our offices to New York."], a: 0, e: "前職の素晴らしい経験に続き、それが自社に与えるプラス効果（新市場開拓の強みになる）を述べる A が自然です。" },
+    { k: "接続/定型句", c: ["Please join us for a welcome reception in the main conference room.", "Parking permits are required for all staff.", "The report must be finished by the end of the week.", "We regret to inform you of this cancellation."], a: 0, e: "着任の報告に続き、着任初日の歓迎レセプションへの参加呼びかけを行う A がスムーズです。" },
+    { k: "語彙(動詞)", c: ["welcome", "dismiss", "warn", "criticize"], a: 0, e: "新しい仲間を「歓迎する（welcome）」が文脈上完璧です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：配送住所の変更確認",
+  text: `Dear Customer Support,
+
+I recently placed an order (Order #8831) for an ergonomic office chair through your website. However, I realized that I accidentally selected my old home address for the delivery. [1] I would like to request that the shipping address be [2] to my new business address before the item leaves the warehouse. [3] I have provided the corrected details below for your reference. Please confirm as soon as possible that this change has been successfully [4].
+
+Thank you,
+Brian Miller`,
+  ja: `カスタマーサポート御中
+
+先日、貴社ウェブサイトを通じてエルゴノミクス・オフィスチェアを注文（注文番号#8831）いたしました。しかしながら、配送先として不注意にも旧自宅住所を選択してしまったことに気付きました。商品が倉庫を出荷される前に、配送先住所を私の新しい勤務先住所に変更していただくようお願いいたします。確認用に以下に正しく修正した詳細情報を記載いたしました。この変更が正しく適用されたかどうか、至急ご確認のお返事をいただけますでしょうか。
+
+よろしくお願いいたします。
+ブライアン・ミラー`,
+  qs: [
+    { k: "一文挿入", c: ["I would like to request that the shipping address be updated.", "The chair arrived in damaged condition yesterday.", "I would like to cancel my order and receive a refund.", "Your website was very difficult to navigate."], a: 0, e: "住所間違いの経緯説明に続き、正しい配送先への変更依頼を行う A が適切です。" },
+    { k: "語彙(動詞)", c: ["updated", "delayed", "rejected", "inspected"], a: 0, e: "住所情報を最新に「更新する・変更する」という意味の updated が正解です。" },
+    { k: "一文挿入(実質状況説明)", c: ["I have provided the corrected details below for your reference.", "The product price was cheaper last week.", "I will visit your store in person tomorrow.", "My credit card expires next year."], a: 0, e: "変更依頼に続き、新しい住所データを下部に記載した旨を伝える A が適しています。" },
+    { k: "語彙(動詞)", c: ["processed", "destroyed", "forgotten", "borrowed"], a: 0, e: "変更手続きが正常に「処理・適用された（processed）」が最も合致します。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：注文商品の在庫切れとお詫び",
+  text: `Dear Mr. Garcia,
+
+Thank you for your recent purchase from Apex Online Electronics. Regrettably, the Bluetooth headphones you ordered are currently [1] out of stock due to high demand. We expect a new shipment to arrive from our manufacturer in approximately ten days. [2] We can either ship your order as soon as the stock arrives or issue a full refund immediately. [3], if you prefer, you may choose an alternative model of equal value. Please reply to this email to let us know how you would like to [4].
+
+Sincerely,
+Customer Care Team`,
+  ja: `ガルシア様
+
+エイペックス・オンライン・エレクトロニクスにてご注文いただきありがとうございます。誠に残念ながら、ご注文いただきましたBluetoothヘッドフォンは需要過多のため現在一時的に在庫切れとなっております。メーカーからの新しい入荷は、約10日後を見込んでおります。商品が入荷し次第発送させていただくか、あるいは直ちに全額返金のお手続きをとらせていただくかのいずれかが可能です。さらに、ご希望であれば同等価値の代替モデルをお選びいただくこともできます。どのように手続きを進めるか、このメールにご返信の上お知らせください。
+
+敬具
+カスタマーケアチーム`,
+  qs: [
+    { k: "副詞/語彙", c: ["temporarily", "permanently", "yearly", "previously"], a: 0, e: "入荷待ちの状況であり「一時的に」在庫切れであることを表す temporarily が正解です。" },
+    { k: "一文挿入", c: ["We can ship your order when stock arrives or issue a refund.", "Our physical store in Dallas is permanently closing.", "Your order has already been delivered to your house.", "The headphones received a bad review online."], a: 0, e: "入荷予定の案内（約10日後）に続き、客に与えられる選択肢（入荷後発送か返金）を提示する A が適切です。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "Therefore"], a: 0, e: "「発送か返金」という2つの選択肢に加え、「別のモデルを選ぶ」という3つ目の選択肢を追加するため Additionally が適しています。" },
+    { k: "動詞(句動詞/前置詞句)", c: ["proceed", "precede", "prevent", "predict"], a: 0, e: "proceed (手続きを進める) が自動詞として how you would like to proceed の形で文法・意味ともに合致します。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：出張費用の事前承認申請",
+  text: `Dear Ms. Vance,
+
+I am writing to formally request approval to attend the Annual Supply Chain Summit in San Francisco from October 12 to 14. [1] Attending this conference will allow me to learn about new logistics technologies that could benefit our department. [2] The estimated total cost, including flight, hotel, and conference registration, is $1,200. [3], I have arranged for Mark Brody to handle my daily tasks while I am away. Thank you for considering my request, and I look forward to your [4].
+
+Best regards,
+Tom Holland`,
+  ja: `ヴァンス様
+
+10月12日から14日までサンフランシスコで開催される年次サプライチェーン・サミットへの参加承認を正式に申請いたしたく、ご連絡申し上げました。このカンファレンスへの参加により、当部門の役に立つ新しい物流技術について学ぶことができます。航空券、ホテル、会議参加費を含む推定合計費用は1,200ドルです。なお、留守中の日々の業務につきましてはマーク・ブロディが対応するよう手配済みです。申請をご検討いただき感謝申し上げます。ご承認のお返事を楽しみにしております。`,
+  qs: [
+    { k: "一文挿入", c: ["Attending this conference will allow me to learn about new technologies.", "I have already booked my flight tickets without approval.", "San Francisco is my favorite city to visit.", "The summit was canceled due to bad weather."], a: 0, e: "参加承認の申請に続き、出張が会社・部門にもたらすメリットを説明する A が適しています。" },
+    { k: "一文挿入(見積費用)", c: ["The estimated total cost is $1,200.", "I will resign from my position next month.", "Our department budget was cut by half.", "The registration deadline passed last week."], a: 0, e: "参加メリットの説明に続き、出張費用の概算見積もりを提示する A が極めて自然です。" },
+    { k: "接続副詞", c: ["In addition", "However", "Otherwise", "Instead"], a: 0, e: "出張目的と予算の提示に加え、「不在時の引き継ぎ手配」という追加情報を添えるため In addition が正解です。" },
+    { k: "語彙(名詞)", c: ["approval", "refusal", "rejection", "punishment"], a: 0, e: "「承認（approval）」の返事を待っているという文脈です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：社内イントラネット移行に伴う確認",
+  text: `To: All Department Directors
+From: Information Technology Department
+Subject: Migration to New Intranet Platform
+
+As mentioned in our earlier communications, the company will migrate to a new intranet portal on Monday, July 10. The updated system offers faster navigation and enhanced document-sharing [1]. [2] All departmental files must be transferred to the new server before 5:00 P.M. this Friday. [3], users will lose edit access to the old system. Detailed instruction guides have been uploaded to the training folder. Please ensure your team members are fully [4] for the transition.`,
+  ja: `各部門長各位
+差出人：情報技術部
+件名：新イントラネットプラットフォームへの移行について
+
+事前のお知らせの通り、当社は7月10日（月）に新しいイントラネットポータルへ移行いたします。更新されたシステムでは、より高速な操作性と向上した機能が提供されます。すべての部門ファイルは、今週金曜日の午後5時までに新しいサーバーへ移行する必要があります。さもなければ、旧システムへの編集アクセス権限が失われます。詳細な手順ガイドがトレーニングフォルダにアップロードされています。貴部門のメンバーが移行に向けて十分に準備できるようご配慮をお願いいたします。`,
+  qs: [
+    { k: "語彙(名詞)", c: ["features", "problems", "barriers", "complaints"], a: 0, e: "新システムの長所として「強化された機能（enhanced features）」が文脈上正解です。" },
+    { k: "一文挿入", c: ["All departmental files must be transferred before Friday.", "The office building will be closed for cleaning.", "New computers have been ordered for everyone.", "We are looking for a new IT manager."], a: 0, e: "システムの移行概要に続き、期限付きの具体的な準備タスク（ファイル移転）を指示する A が自然です。" },
+    { k: "接続副詞(警告・条件)", c: ["Otherwise", "Furthermore", "Likewise", "Therefore"], a: 0, e: "「期限までにファイルを移行しなさい。さもなければ（Otherwise）アクセス権が失われる」という警告・対照の文脈です。" },
+    { k: "語彙(形容詞受動形)", c: ["prepared", "confused", "delayed", "discouraged"], a: 0, e: "be prepared for ~ (〜の準備ができている) の定型文脈です。" }
+  ] },
+
+// --- 社内告知・メモ (15文章) ---
+{ type: "社内告知", title: "件名：オフィス清掃作業の実施",
+  text: `To: All Tenants
+From: Building Management
+Subject: Annual Window Cleaning
+
+Please be advised that annual exterior window cleaning is scheduled for Saturday, April 18, between 8:00 A.M. and 4:00 P.M. During this period, cleaning personnel will be working outside the windows using scaffolding. [1] To protect your privacy and prevent distractions, please close all window blinds before leaving the office on Friday evening. [2] In case of severe weather, the work will be [3] to the following Saturday, April 25. Thank you for your [4] and understanding.`,
+  ja: `テナント各位
+差出人：ビル管理事務所
+件名：年次窓清掃作業のお知らせ
+
+4月18日（土）午前8時から午後4時までの間、年次の外壁窓清掃作業が予定されておりますのでお知らせいたします。期間中、清掃員が足場を使用して窓の外側で作業を行います。プライバシーの保護と作業の妨げを防ぐため、金曜日の夕方にオフィスを出る前にすべての窓のブラインドを閉めていただくようお願いいたします。荒天の場合、作業は翌週の土曜日、4月25日に延期されます。ご理解とご協力に感謝申し上げます。`,
+  qs: [
+    { k: "一文挿入", c: ["To protect your privacy, please close all window blinds on Friday.", "The cafeteria will offer a special discount this Saturday.", "Please submit your monthly sales reports by tomorrow.", "The main elevator is currently undergoing repairs."], a: 0, e: "窓の外を清掃員が作業するという案内に続き、事前に取ってほしい行動（ブラインドを閉める）を求める A が適切です。" },
+    { k: "一文挿入(悪天候時対応)", c: ["In case of severe weather, the work will be postponed.", "We have hired a new security guard for the building.", "The parking garage will be closed indefinitely.", "Please pay your electricity bill by the end of the month."], a: 0, e: "作業日程の案内に続き、悪天候時の順延リスクについて触れる A が自然です。" },
+    { k: "語彙(動詞受動形)", c: ["postponed", "promoted", "constructed", "approved"], a: 0, e: "日程が後日に「延期される」を意味する postponed が正解です。" },
+    { k: "語彙(定型句)", c: ["cooperation", "competition", "hesitation", "opposition"], a: 0, e: "ご協力に感謝する際の定型句「cooperation and understanding」が正解です。" }
+  ] },
+
+{ type: "社内告知", title: "件名：社員食堂のメニューリニューアル",
+  text: `To: All Staff
+From: Corporate Services
+Subject: Cafeteria Menu Updates
+
+Starting next Monday, October 5, the employee cafeteria will introduce a completely refreshed menu featuring healthy, locally sourced options. [1] In response to employee feedback, we have added more vegetarian and gluten-free choices. [2] Additionally, meal prices will remain [3] despite the higher quality of ingredients. [4] We encourage everyone to visit the cafeteria and try the new options next week!`,
+  ja: `全社員各位
+差出人：総務サービス部
+件名：社員食堂メニューのリニューアル
+
+来週10月5日（月）より、社員食堂にて地産地消のヘルシーな選択肢を取り入れた全面リニューアルメニューを導入いたします。従業員からのフィードバックに応え、ベジタリアン向けおよびグルテンフリーの選択肢を増やいたしました。さらに、食材の質が高くなったにもかかわらず、食事の価格は据え置き（変更なし）のままとなります。来週はぜひ食堂にお越しいただき、新しいメニューをお試しください！`,
+  qs: [
+    { k: "一文挿入", c: ["In response to feedback, we added more vegetarian choices.", "The cafeteria will be closed permanently next month.", "Please bring your own lunch from home.", "Dietary requirements will no longer be catered for."], a: 0, e: "メニューのリニューアル発表に続き、具体的な変更点（要望に応じたベジタリアン料理の追加）を述べる A が合致します。" },
+    { k: "一文挿入(価格の維持)", c: ["Meal prices will remain unchanged despite higher quality.", "Parking rates will be doubled starting next week.", "Coffee machines have been removed from all floors.", "The kitchen staff will be replaced tomorrow."], a: 0, e: "メニュー拡充に続き、価格が据え置きであることを伝える A が非常にスムーズです。" },
+    { k: "語彙(形容詞)", c: ["unchanged", "unstable", "expensive", "unpredictable"], a: 0, e: "価格が変わらないことを表す remain unchanged が正解です。" },
+    { k: "語彙(動詞/おすすめ)", c: ["encourage", "forbid", "prevent", "warn"], a: 0, e: "encourage everyone to ~ (皆さんに〜するよう促す・勧める) が合致します。" }
+  ] },
+
+{ type: "社内告知", title: "件名：年末年始の休業期間について",
+  text: `To: All Employees
+From: Executive Office
+Subject: Year-End Holiday Schedule
+
+Please note that our offices will be closed for the year-end holidays from December 29 through January 3. Regular business operations will [1] on Thursday, January 4, at 8:30 A.M. [2] All employees should ensure that urgent customer inquiries are addressed before the holiday period begins. [3] Emergency contact numbers for department managers have been posted on the bulletin board. We wish you and your families a joyful and [4] holiday season!`,
+  ja: `全社員各位
+差出人：役員室
+件名：年末年始の休業日程について
+
+年末年始の休業のため、12月29日から1月3日までオフィスを閉鎖いたしますのでご注意ください。通常の業務は1月4日（木）午前8時30分に再開いたします。すべての社員は、休業期間が始まる前に緊急の顧客からの問い合わせに対応しておく必要があります。各部門マネージャーの緊急連絡先は掲示板に掲示されています。皆様とご家族が楽しく穏やかな休日を過ごされることをお祈り申し上げます！`,
+  qs: [
+    { k: "語彙(動詞)", c: ["resume", "cancel", "suspend", "hesitate"], a: 0, e: "休業後に業務が「再開する」という意味の resume が正解です。" },
+    { k: "一文挿入", c: ["All employees should ensure urgent inquiries are addressed.", "Salaries will be paid earlier this month.", "The company party was a great success.", "New calendars are available at reception."], a: 0, e: "休業日程の提示に続き、休業前に行うべき事前準備（顧客対応の徹底）を促す A が適切です。" },
+    { k: "一文挿入(緊急連絡先)", c: ["Emergency contact numbers have been posted on the bulletin board.", "Please leave your office keys with security.", "Computers should be kept turned on.", "Travel expense claims will not be accepted."], a: 0, e: "休業中の万が一の体制として緊急連絡先の告知を行う A が自然です。" },
+    { k: "語彙(形容詞)", c: ["restful", "painful", "stressful", "harmful"], a: 0, e: "好意的な休日の挨拶として「穏やかな・心休まる（restful）」が合致します。" }
+  ] },
+
+{ type: "社内告知", title: "件名：防火避難訓練の実施案内",
+  text: `To: All Office Occupants
+From: Safety Committee
+Subject: Upcoming Fire Drill
+
+The annual building fire drill will take place on Wednesday, September 14, at 10:00 A.M. When the alarm sounds, all staff must immediately [1] the building using the nearest emergency stairwells. Do not use the elevators under any circumstances. [2] Designated safety marshals will guide you to the assembly area in the north parking lot. [3], a brief attendance check will be conducted to ensure everyone is accounted for. Your full cooperation is essential for a [4] safety test.`,
+  ja: `ビル内全滞在者各位
+差出人：安全委員会
+件名：避難訓練実施のお知らせ
+
+年次のビル防火避難訓練を9月14日（水）午前10時より実施いたします。警報が鳴ったら、全スタッフは最も近い非常階段を使用して直ちに建物から避難してください。いかなる状況でもエレベーターは使用しないでください。指定された安全誘導員が、北駐車場にある集合場所まで皆様を案内いたします。集合後、全員の無事を確認するために簡単な点呼が行われます。訓練を成功させるため、皆様の全面的なご協力をお願いいたします。`,
+  qs: [
+    { k: "語彙(動詞)", c: ["evacuate", "decorate", "renovate", "purchase"], a: 0, e: "災害・訓練時に建物から「避難する」を意味する evacuate が正解です。" },
+    { k: "一文挿入", c: ["Designated safety marshals will guide you to the assembly area.", "The fire alarm system was recently replaced.", "Coffee is not allowed during the drill.", "Please bring your laptops to the parking lot."], a: 0, e: "避難指示（非常階段の使用）に続き、集合場所への移動方法（安全誘導員による案内）を説明する A が適しています。" },
+    { k: "接続副詞", c: ["Afterwards", "However", "Otherwise", "Instead"], a: 0, e: "集合場所に避難した後の次のステップ（点呼の実施）を順序立てて説明するため Afterwards (その後) が正解です。" },
+    { k: "語彙(形容詞)", c: ["successful", "careless", "dangerous", "expensive"], a: 0, e: "訓練を「成功させる・無事に終える」ための協力要請なので successful が合致します。" }
+  ] },
+
+{ type: "社内告知", title: "件名：社内ITセキュリティ講習への参加義務",
+  text: `To: All Employees
+From: IT Security Office
+Subject: Mandatory Cybersecurity Training
+
+In light of recent industry-wide data security threats, all staff members are required to complete an online cybersecurity course by November 30. The interactive training module covers password management and phishing email identification. [1] It takes approximately 45 minutes to complete. [2] Employees who do not finish the module by the deadline will have their system access [3] limited. [4], we appreciate your commitment to keeping our company data safe.`,
+  ja: `全社員各位
+差出人：ITセキュリティ室
+件名：ITセキュリティ研修受講の義務化について
+
+昨今の業界全体におけるデータセキュリティ上の脅威に鑑み、全スタッフは11月30日までにオンラインのサイバーセキュリティ講座を受講することが義務付けられます。このインタラクティブな研修モジュールでは、パスワード管理やフィッシングメールの見分け方を扱っています。完了までの所要時間は約45分です。期限までにモジュールを完了しなかった社員は、システムへのアクセスが一時的に制限されます。会社のデータを安全に保つための皆様の積極的な取り組みに感謝いたします。`,
+  qs: [
+    { k: "一文挿入", c: ["It takes approximately 45 minutes to complete.", "The training room is located on the third floor.", "Security passwords should be shared with your manager.", "Computers will be replaced next week."], a: 0, e: "オンライン研修の概要説明に続き、受講にかかる平均時間（約45分）を説明する A が自然です。" },
+    { k: "一文挿入(未完了時の処置)", c: ["Employees who do not finish by the deadline will have access limited.", "All new laptops have free security software.", "The IT office will be closed on Friday.", "Thank you for attending last week's party."], a: 0, e: "受講期限の明示に続き、未完了者に対するペナルティ（アクセス制限）を伝える A が適しています。" },
+    { k: "語彙(副詞)", c: ["temporarily", "permanently", "frequently", "rarely"], a: 0, e: "受講を完了するまでの「一時的な」処置としてアクセスを制限するため temporarily が正解です。" },
+    { k: "接続副詞", c: ["Overall", "However", "Otherwise", "For instance"], a: 0, e: "連絡の締めくくりとして全体をまとめる Overall (全体として/総じて) が適しています。" }
+  ] },
+
+{ type: "社内告知", title: "件名：駐車スペース再割り当てのお知らせ",
+  text: `To: All Drivers
+From: Facilities Department
+Subject: Parking Garage Reassignment
+
+Due to scheduled maintenance work on Level 2 of the underground garage, parking permits will be temporarily reassigned starting next Monday. Drivers who currently park on Level 2 should move their vehicles to Level 4. [1] Please display your new parking pass on your dashboard at all times. [2] Failure to do so may result in your vehicle being towed. [3], visitor spaces will remain unchanged during the maintenance period. We anticipate the work will take [4] three weeks to complete.`,
+  ja: `ドライバー各位
+差出人：施設管理部
+件名：地下駐車場スペース再割り当てのお知らせ
+
+地下駐車場レベル2で予定されているメンテナンス作業に伴い、来週月曜日より駐車許可スペースが一時的に再割り当てとなります。現在レベル2に駐車されているドライバーの皆様は、車両をレベル4に移動してください。新しい駐車証は常にダッシュボードの上に掲示してください。掲示がない場合、車両がレッカー移動される可能性があります。なお、メンテナンス期間中も来客用スペースに変更はありません。作業完了まで約3週間かかる見込みです。`,
+  qs: [
+    { k: "一文挿入", c: ["Please display your new parking pass on your dashboard at all times.", "The garage will be closed permanently next month.", "Car washing services are available on Level 1.", "Public transport is highly recommended."], a: 0, e: "駐車位置の変更指示に続き、車内に提示すべき許可証に関する注意事項 A がスムーズです。" },
+    { k: "一文挿入(ルール違反の警告)", c: ["Failure to do so may result in your vehicle being towed.", "The maintenance crew arrives at 6:00 A.M.", "Parking fees can be paid online.", "Please drive slowly inside the garage."], a: 0, e: "許可証掲示の指示に続き、指示に従わなかった場合のリスク（レッカー移動）を説明する A が適切です。" },
+    { k: "接続副詞", c: ["Meanwhile", "However", "Therefore", "Otherwise"], a: 0, e: "社員スペースの変更を説明する一方で、「来客用スペースはその間（Meanwhile）変わらない」と対比させる接続が正解です。" },
+    { k: "語彙(前置詞/副詞)", c: ["approximately", "exactly", "hardly", "rarely"], a: 0, e: "所要期間の見積もりとして「およそ・約（approximately）」が文脈上適切です。" }
+  ] },
+
+{ type: "社内告知", title: "件名：社内ボランティア活動の募集",
+  text: `To: All Employees
+From: Community Outreach Committee
+Subject: Volunteer Opportunity
+
+Apex Corporation is proud to sponsor the annual Community Park Cleanup on Saturday, May 20. We are seeking enthusiastic employee volunteers to help plant trees, paint benches, and clear litter. [1] The event will run from 9:00 A.M. to 1:00 P.M., followed by a complimentary lunch for all participants. [2] Transportation between the office and the park will be provided. [3], t-shirts and gardening gloves will be supplied on site. Please sign up on the intranet by May 12 to [4] your spot.`,
+  ja: `全社員各位
+差出人：地域貢献委員会
+件名：ボランティア活動参加者募集のお知らせ
+
+エイペックス・コーポレーションは、5月20日（土）に開催される年次地域公園清掃イベントを後援いたします。植樹、ベンチのペンキ塗り、ゴミ拾いを手伝ってくださる意欲的な社員ボランティアを募集しております。イベントは午前9時から午後1時まで行われ、終了後には参加者全員に無料の昼食が提供されます。オフィスと公園間の送迎バスも用意いたします。さらに、Tシャツや園芸手袋も現地で支給されます。参加枠を確保するため、5月12日までにイントラネットからお申し込みください。`,
+  qs: [
+    { k: "一文挿入", c: ["The event will run from 9:00 A.M. to 1:00 P.M., followed by lunch.", "The park was built fifty years ago.", "Volunteers must purchase their own tools.", "Heavy rain is expected throughout May."], a: 0, e: "ボランティアの募集内容説明に続き、イベントの具体的な時間帯と昼食支給の特典を伝える A が適しています。" },
+    { k: "一文挿入(送迎手配)", c: ["Transportation between the office and the park will be provided.", "Parking at the park is extremely limited.", "Office laptops should not be brought to the event.", "Tree planting requires special certification."], a: 0, e: "移動手段の不安を解消するため、送迎バスの提供を伝える A がスムーズにつながります。" },
+    { k: "接続副詞", c: ["In addition", "However", "Otherwise", "Instead"], a: 0, e: "昼食や送迎の特典に加え、「Tシャツ等の支給」も付け加えるため In addition が正解です。" },
+    { k: "語彙(動詞)", c: ["secure", "cancel", "postpone", "abandon"], a: 0, e: "申し込みにより参加枠を「確保する」意味の secure が正解です。" }
+  ] },
+
+{ type: "社内告知", title: "件名：健康診断（定期健診）受診のお願い",
+  text: `To: All Full-Time Staff
+From: Health & Wellness Department
+Subject: Annual Health Examinations
+
+Annual health checks for all full-time employees will be conducted at the On-Site Clinic from June 1 to June 15. Regular health screenings are essential for maintaining workplace wellness and detecting health issues [1]. [2] Online appointment scheduling is now open on the employee portal. [3] Please ensure you fast for at least eight hours prior to your morning appointment. If you need to reschedule, please notify the clinic at least 24 hours in [4].`,
+  ja: `全常勤社員各位
+差出人：健康推進課
+件名：定期健康診断受診のお願い
+
+全常勤社員を対象とした年次健康診断を、6月1日から6月15日まで社内クリニックにて実施いたします。定期的な健康診断は、職場の健康維持や健康問題の早期発見に不可欠です。本日より、社員ポータルにてオンライン予約の受付を開始いたしました。午前の受診予約の前に、少なくとも8時間は絶食（食事を控える）していただくようお願いいたします。予約の変更が必要な場合は、少なくとも24時間前までにクリニックへご連絡ください。`,
+  qs: [
+    { k: "語彙/副詞", c: ["early", "hardly", "lately", "rarely"], a: 0, e: "健康問題の「早期（early）」発見という意味になる early が正解です。" },
+    { k: "一文挿入", c: ["Online appointment scheduling is now open on the portal.", "The clinic was renovated last winter.", "Doctors from the main hospital will visit us.", "Exercise equipment is available in the gym."], a: 0, e: "健診の実施案内と目的に続き、受診のための具体的な行動（予約開始の告知）を伝える A が適切です。" },
+    { k: "一文挿入(受診時の注意)", c: ["Please ensure you fast for at least eight hours prior.", "You can wear any clothes you like.", "Blood tests are optional for new employees.", "Coffee will be served after the exam."], a: 0, e: "予約受付の案内に続き、健診前の具体的な注意事項（絶食指示）を与える A が自然です。" },
+    { k: "定型表現(熟語)", c: ["advance", "addition", "reverse", "contrast"], a: 0, e: "in advance (前もって・あらかじめ) という超頻出の定型フレーズです。" }
+  ] },
+
+{ type: "社内告知", title: "件名：社内イントラネット障害の発生と復旧",
+  text: `To: All Staff
+From: Systems Administrator
+Subject: Resolution of Network Outage
+
+We are pleased to report that the unexpected network outage affecting the accounting and sales server has been fully resolved. The system went down at 11:15 A.M. due to a hardware failure in the main switch. [1] Our technical engineers replaced the damaged equipment and restored full functionality by 1:30 P.M. [2] All delayed emails sent during the outage have now been delivered. [3], we advise all users to restart their computers to clear cached data. Thank you for your [4] while we worked on this issue.`,
+  ja: `全社員各位
+差出人：システム管理者
+件名：ネットワーク障害の解決について
+
+会計および営業サーバーに影響を与えていた予期せぬネットワーク障害が完全に解決いたしましたことをご報告いたします。メインスイッチのハードウェア故障により、午前11時15分にシステムが停止いたしました。当社の技術エンジニアが破損した機器を交換し、午後1時30分までにすべての機能を復旧させました。障害中に送信が遅れていたすべての電子メールは、現在無事に配信されております。なお、キャッシュデータを消去するため、全ユーザーにコンピューターの再起動をお勧めいたします。問題解決中の皆様のご理解に感謝申し上げます。`,
+  qs: [
+    { k: "一文挿入", c: ["Our engineers replaced damaged equipment and restored functionality.", "The accounting department will move to the 5th floor.", "New computers will be delivered next Monday.", "Internet speeds will be tested tomorrow."], a: 0, e: "障害発生の報告に続き、どのような対応を行って復旧させたかを説明する A が適切です。" },
+    { k: "一文挿入(メール不具合解消)", c: ["All delayed emails sent during the outage have been delivered.", "Please do not use company email for personal matters.", "The printer paper supply has been replenished.", "Lunch hours will be extended today."], a: 0, e: "システム復旧の報告に続き、障害中に溜まっていたメールの配信完了を伝える A がスムーズです。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "Instead"], a: 0, e: "復旧の案内に加え、「PCの再起動を推奨する」という追加の指示を行うため Additionally が合致します。" },
+    { k: "語彙(名詞)", c: ["patience", "refusal", "stubbornness", "reluctance"], a: 0, e: "障害中の「辛抱・理解（patience）」に感謝する定型文脈です。" }
+  ] },
+
+{ type: "社内告知", title: "件名：新任役員の就任挨拶とレセプション",
+  text: `To: All Employees
+From: Executive Committee
+Subject: Welcome Reception for Chief Financial Officer
+
+We are delighted to announce that Mr. Robert Vance has officially joined Apex Financial as our new Chief Financial Officer. Mr. Vance brings over twenty years of leadership experience in investment banking. [1] To celebrate his appointment, a welcome reception will be held in the main atrium on Friday, October 10, at 4:00 P.M. Refreshments and light snacks will be served. [2] All staff members are encouraged to attend and greet Mr. Vance personally. [3], please RSVP via the calendar invitation by Wednesday so we can plan catering [4].`,
+  ja: `全社員各位
+差出人：役員会
+件名：最高財務責任者（CFO）就任歓迎レセプションのお知らせ
+
+ロバート・ヴァンス氏が当社の新しい最高財務責任者（CFO）としてエイペックス・フィナンシャルに正式に就任されましたことをお知らせいたします。ヴァンス氏は投資銀行業界で20年以上のリーダーシップ経験を有しておられます。同氏の就任を祝し、10月10日（金）午後4時よりメインアトリウムにて歓迎レセプションを開催いたします。お飲み物と軽食をご用意しております。スタッフの皆様はぜひご参加いただき、ヴァンス氏へ直接ご挨拶されることをお勧めいたします。ケータリングを適切に手配するため、水曜日までにカレンダー招待から参加可否をご回答ください。`,
+  qs: [
+    { k: "一文挿入", c: ["To celebrate his appointment, a reception will be held on Friday.", "The financial report was published last week.", "All employees must submit their tax forms today.", "Our Chicago branch will be expanding soon."], a: 0, e: "CFO就任の発表に続き、就任祝いのレセプション開催を案内する A が適切です。" },
+    { k: "一文挿入(参加呼びかけ)", c: ["All staff members are encouraged to attend and greet him.", "Parking will be restricted during the reception.", "The CEO will give a two-hour presentation.", "Dress code for the event is formal wear only."], a: 0, e: "飲食の用意がある旨に続き、全社からの参加を促す A が非常にスムーズです。" },
+    { k: "接続副詞", c: ["To facilitate this", "In spite of this", "Otherwise", "On the contrary"], a: 0, e: "「ケータリングの手配をスムーズにする（To facilitate this）」という文脈を接続するフレーズが正解です。" },
+    { k: "副詞/語彙", c: ["accordingly", "accidentally", "frequently", "rarely"], a: 0, e: "「（回答人数に）応じて・適切に（accordingly）」ケータリングを計画するという文脈です。" }
+  ] },
+
+// --- ニュース記事 (5文章) ---
+{ type: "ニュース記事", title: "Apex社、新本社ビルの建設を発表",
+  text: `SAN FRANCISCO — Apex Technologies announced on Tuesday that it will construct a new headquarters building in downtown San Francisco. The state-of-the-art facility, estimated to cost $150 million, will feature solar panels and advanced energy-saving systems. [1] Construction is scheduled to break ground in March and is expected to be [2] by late next year. The mayor praised the investment, noting that the project will create over 500 local construction jobs. [3] Local business leaders have also [4] the move, predicting it will boost the downtown economy.`,
+  ja: `サンフランシスコ — エイペックス・テクノロジーズは火曜日、サンフランシスコのダウンタウンに新しい本社ビルを建設すると発表した。1億5,000万ドルと見積もられる最新鋭の施設には、ソーラーパネルと高度な省エネシステムが備えられる予定だ。建設工事は3月に着工し、来年後半までに完了する見込みである。市長はこの投資を称賛し、このプロジェクトによって500人以上の地元の建設関連の雇用が創出されると言及した。地元のビジネスリーダーたちもこの動きを歓迎しており、ダウンタウンの経済を活性化させると予測している。`,
+  qs: [
+    { k: "一文挿入", c: ["Construction is scheduled to break ground in March.", "The company was founded twenty years ago.", "San Francisco is known for its cool summers.", "Most employees currently work remotely."], a: 0, e: "新社屋の概要や費用に続き、具体的な建設スケジュール（3月着工）を述べる A が適切です。" },
+  { k: "語彙(動詞受動形)", c: ["completed", "postponed", "rejected", "canceled"], a: 0, e: "建設が「完了する」という意味の completed が適しています。" },
+    { k: "一文挿入(好意的な反応)", c: ["Local business leaders have also welcomed the move.", "Environmental groups have filed a lawsuit.", "The city council voted against the project.", "Traffic in the area will be permanently blocked."], a: 0, e: "市長による賛辞に続き、地元ビジネス界からの歓迎の声を添える A が自然です。" },
+    { k: "語彙(動詞)", c: ["welcomed", "criticized", "ignored", "delayed"], a: 0, e: "経済活性化を予測して動きを「歓迎した（welcomed）」が合致します。" }
+  ] },
+
+{ type: "ニュース記事", title: "グローバル航空、燃料高騰に伴う運賃値上げ",
+  text: `CHICAGO — Global Airlines announced a 5 percent increase in passenger fares across all international routes, effective next month. The decision comes in response to rising jet fuel prices over the past two quarters. [1] Industry analysts noted that other major carriers are likely to follow suit with similar price adjustments. [2] Despite the fare increases, demand for international travel remains [3]. A spokesperson for Global Airlines stated that the company will continue to invest in improving passenger comfort and [4] onboard entertainment options.`,
+  ja: `シカゴ — グローバル航空は来月より、すべての国際線において旅客運賃を5パーセント値上げすることを発表した。この決定は、過去2四半期にわたるジェット燃料価格の高騰を受けたものである。業界アナリストは、他の主要航空会社も同様の価格調整に追随する可能性が高いと指摘している。運賃の値上げにもかかわらず、国際旅行の需要は堅調なままである。グローバル航空の広報担当者は、同社は今後も乗客の快適性向上と機内エンターテインメントの選択肢拡充への投資を続けていくと述べた。`,
+  qs: [
+    { k: "一文挿入", c: ["Industry analysts noted other carriers are likely to follow suit.", "Fuel prices have dropped to record lows this year.", "The airline added ten new domestic routes last week.", "Passengers are eligible for free upgrades today."], a: 0, e: "一社の値上げ発表に続き、業界全体の傾向（他社も追随する可能性）を分析する A が適切です。" },
+    { k: "一文挿入(需要の強さ)", c: ["Despite the fare increases, demand for travel remains strong.", "Flight delays have increased significantly this summer.", "The airline is planning to reduce its staff size.", "Pilot training programs will be shortened."], a: 0, e: "値上げの背景説明に続き、「値上げにもかかわらず需要は依然として強い」という市場の反応を説明する A が適しています。" },
+    { k: "語彙(形容詞)", c: ["strong", "weak", "unpredictable", "declining"], a: 0, e: "「需要が堅調・旺盛である」を表す strong が正解です。" },
+    { k: "語彙(動詞動名詞/名詞)", c: ["expanding", "reducing", "preventing", "canceling"], a: 0, e: "エンターテインメントの選択肢を「拡大・拡充する（expanding）」が文脈上最も適切です。" }
+  ] },
+
+{ type: "ニュース記事", title: "エコ・フットウェア社、バイオ素材のシューズを発表",
+  text: `PORTLAND — Eco Footwear launched its new line of running shoes made entirely from recycled ocean plastics and plant-based materials this week. The revolutionary footwear line has already gathered significant attention from environmentally conscious consumers. [1] According to the company, each pair of shoes repurposes approximately 12 plastic bottles. [2] Early sales figures indicate that the product could become the company's most [3] release to date. The shoes are currently available online and at select retail [4] nationwide.`,
+  ja: `ポートランド — エコ・フットウェア社は今週、海洋リサイクルプラスチックと植物由来の素材のみで作られたランニングシューズの新ラインを発売した。この革命的なフットウェアラインは、環境意識の高い消費者からすでに大きな注目を集めている。同社によると、シューズ1足につき約12本のペットボトルが再利用されているという。初期の売上数字は、この製品が同社にとって過去最も成功した（収益性の高い）発売となる可能性を示している。当シューズは現在、オンラインおよび全国の選ばれた取扱店舗にて購入可能である。`,
+  qs: [
+    { k: "一文挿入", c: ["According to the company, each pair repurposes 12 plastic bottles.", "The company plans to close its main factory in Oregon.", "Traditional leather shoes remain the most popular choice.", "The founder of the company announced his retirement."], a: 0, e: "環境配慮型シューズの発表に続き、具体的な環境貢献度（ペットボトル12本の再利用）を説明する A が適しています。" },
+    { k: "一文挿入(好調な売上)", c: ["Early sales figures indicate the product could be very successful.", "Customer complaints have increased over the past week.", "The shoes are only offered in black and white.", "International shipping is currently unavailable."], a: 0, e: "商品の特徴説明に続き、発売後の市場での初動の良さ（初期売上の好調さ）を伝える A がスムーズです。" },
+    { k: "語彙(形容詞)", c: ["successful", "disappointing", "expensive", "hazardous"], a: 0, e: "「成功を収めた・ヒットした」を意味する successful が適しています。" },
+    { k: "語彙(名詞)", c: ["locations", "factories", "warehouses", "laboratories"], a: 0, e: "販売店舗を指す retail locations (取扱店舗・販売拠点) が正解です。" }
+  ] },
+
+{ type: "ニュース記事", title: "都市部における電気バス導入の拡大",
+  text: `SEATTLE — The City Transit Authority announced a plan to replace its entire fleet of diesel buses with zero-emission electric vehicles by 2030. The transition is part of the city's broader initiative to cut greenhouse gas emissions. [1] The first batch of 50 electric buses will arrive this autumn and enter service immediately. [2] To support the new fleet, three high-speed charging stations are being constructed. [3] Environmental advocates have praised the investment as a major step toward sustainable urban transport. The project is partially funded by a federal [4].`,
+  ja: `シアトル — 市交通局は、2030年までにディープセルバスの全車両を排出ガスゼロの電気自動車に置き換える計画を発表した。この移行は、温室効果ガス排出量を削減するための市の広範な取り組みの一環である。最初の50台の電気バスの第一陣は今秋到着し、直ちに営業運転を開始する予定だ。新しいバス車両を支えるため、3か所の急速充電ステーションが建設中である。環境擁護団体は、持続可能な都市交通に向けた大きな一歩としてこの投資を賛辞した。なお、本プロジェクトには連邦政府からの助成金が一部充てられている。`,
+  qs: [
+    { k: "一文挿入", c: ["The first batch of 50 electric buses will arrive this autumn.", "Bus fares will be increased by fifty percent next month.", "Private cars will be banned from the city center.", "The main bus terminal was destroyed in a storm."], a: 0, e: "2030年までの全車電動化計画に続き、最初の具体的ステップ（今秋の50台導入）を説明する A が自然です。" },
+    { k: "一文挿入(インフラ整備)", c: ["To support the new fleet, charging stations are being constructed.", "Drivers have gone on strike demanding higher wages.", "Bicycles are becoming more popular than buses.", "The electric buses were manufactured overseas."], a: 0, e: "車両導入に続き、それを支えるインフラ（充電ステーション建設）について触れる A が適切です。" },
+    { k: "語彙(動詞/評価)", c: ["praised", "criticized", "postponed", "investigated"], a: 0, e: "環境団体の好意的な反応を表す praised (称賛した) が正解です。" },
+    { k: "語彙(名詞/資金補助)", c: ["grant", "fine", "debt", "tax"], a: 0, e: "政府からの「助成金・補助金」を意味する grant が文脈上ぴったりです。" }
+  ] },
+
+{ type: "ニュース記事", title: "地域スーパーチェーン、ロボットレジの試行運用",
+  text: `BOSTON — Metro Supermarkets announced it will begin testing automated robotic checkout systems in five of its Boston stores starting next month. The innovative technology uses artificial intelligence to automatically scan and tally items in a customer's basket. [1] Company executives believe the system will drastically reduce waiting times during peak hours. [2] Union representatives have expressed concern that the automation could lead to job losses for human cashiers. [3], Metro Supermarkets assured the public that no workers will be laid off and that staff will be reassigned to customer service roles. The trial will last for [4] six months.`,
+  ja: `ボストン — メトロ・スーパーマーケッツは、来月からボストンの5店舗で自動ロボットレジシステムの試行運用を開始すると発表した。この革新的な技術は、人工知能を使用して顧客のカゴの中の商品を自動的にスキャンして計算する。会社の幹部らは、このシステムによりピーク時の待ち時間が大幅に短縮されると信じている。一方、労働組合の代表者は、自動化によって人間のレジ係の雇用削減につながるのではないかと懸念を表明した。しかしながら、メトロ・スーパーマーケッツは解雇される従業員はおらず、スタッフは接客対応の役割に再配置されると世間に保証した。試行期間は6か月間続く予定である。`,
+  qs: [
+    { k: "一文挿入", c: ["Executives believe the system will drastically reduce waiting times.", "Supermarket prices have risen due to inflation.", "Customers prefer paying with cash over credit cards.", "The company plans to open a store in New York."], a: 0, e: "AIレジ導入の案内に続き、そのメリット（ピーク時の待ち時間削減）を述べる A がスムーズです。" },
+    { k: "一文挿入(懸念の声)", c: ["Union representatives expressed concern about job losses.", "Robotics technology is becoming cheaper every year.", "Stores will remain open 24 hours a day during the trial.", "Fresh produce is sourced from local farms."], a: 0, e: "利点の主張に続き、労働者側からの懸念（雇用の危機）という対立的視点を導入する A が自然です。" },
+    { k: "接続副詞(逆接・反論)", c: ["However", "Furthermore", "Therefore", "Similarly"], a: 0, e: "懸念に対して、会社側が「解雇はない」と否定・釈明するため、逆接の However (しかしながら) が正解です。" },
+    { k: "語彙(前置詞/期間)", c: ["approximately", "exactly", "rarely", "hardly"], a: 0, e: "期間の長さを指す「およそ（approximately）」が文脈上適しています。" }
+  ] },
+
+// ===== ブロック 2 (文章 41 ～ 80) =====
+
+// --- ビジネスメール (10文章) ---
+{ type: "ビジネスメール", title: "件名：年間総会（AGM）のご案内",
+  text: `Dear Shareholder,
+
+You are cordially invited to attend the Annual General Meeting of Apex Capital Corporation. The meeting will be held on Thursday, November 14, at 10:00 A.M. at the Grand Hotel in Chicago. [1] Shareholders will vote on the election of new board members and review the audited financial statements for the fiscal year. [2] If you are unable to attend in person, you may cast your vote by submitting the enclosed proxy form. [3], proxy votes must be received by November 10 to be counted. We look forward to your [4] at the meeting.
+
+Sincerely,
+Corporate Secretary`,
+  ja: `株主の皆様
+
+エイペックス・キャピタル・コーポレーションの年次株主総会へのご出席を心よりお祈り申し上げます。総会は11月14日（木）午前10時よりシカゴのグランドホテルにて開催されます。株主の皆様には、新しい取締役の選任について議決権を行使していただき、当年度の監査済み財務諸表をご査収いただきます。直接ご出席いただけない場合は、同封の議決権行使書をご提出いただくことで投票が可能です。なお、代理投票は集計の都合上、11月10日までに必着となります。総会へのご出席をお待ちしております。`,
+  qs: [
+    { k: "一文挿入", c: ["Shareholders will vote on the election of board members.", "The hotel was built twenty years ago.", "Lunch will be provided after the meeting.", "Stock prices reached a record high yesterday."], a: 0, e: "日時・場所の案内に続き、株主総会での主要な議題（取締役選任と財務報告）を説明する A が適しています。" },
+    { k: "一文挿入(代理投票)", c: ["If unable to attend, you may cast your vote using the proxy form.", "Parking is available in the underground garage.", "Please bring your personal computer to the meeting.", "Board members will receive a salary increase."], a: 0, e: "欠席者向けの代替手段（委任状・代理投票による議決権行使）を提示する A がスムーズです。" },
+    { k: "接続副詞", c: ["However", "Otherwise", "Therefore", "In addition"], a: 0, e: "代理投票の手続き案内に加え、「ただし締め切りは11月10日必着である」と条件・注意点を付与するため However(ただし/注意点) が適しています。" },
+    { k: "語彙(名詞)", c: ["presence", "absence", "refusal", "reluctance"], a: 0, e: "総会への「出席（presence）」を心待ちにしているという定型文脈です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：新システム導入に伴う研修のお知らせ",
+  text: `To: All Sales Representatives
+From: Training Department
+Subject: New CRM Software Training
+
+Starting next month, our department will transition to the SalesForce+ CRM platform. This system is designed to streamline customer relationship management and improve order tracking. [1] All sales representatives must complete a two-hour interactive training workshop before gaining access to the platform. [2] Training sessions will be offered on multiple dates between May 10 and May 20. [3], please log in to the employee portal and register for a session that fits your schedule. Early registration is recommended as seats are [4].`,
+  ja: `営業担当各位
+差出人：研修部
+件名：新CRMソフトウェア研修のご案内
+
+来月より、当部門はSalesForce+ CRMプラットフォームへ移行いたします。本システムは、顧客関係管理のスリム化と注文追跡の向上を目的に設計されています。全営業担当者は、プラットフォームへのアクセス権を得る前に、2時間のインタラクティブな研修ワークショップを完了する必要があります。研修セッションは5月10日から5月20日の間の複数の日程で提供されます。ご自身のスケジュールに合うセッションにログインしてご登録ください。座席数には限りがございますので、お早めのご登録をお勧めいたします。`,
+  qs: [
+    { k: "一文挿入", c: ["All representatives must complete a training workshop.", "The sales department won the annual achievement award.", "Laptops can be purchased at a corporate discount.", "Customer calls should be logged manually."], a: 0, e: "新システムの導入目的説明に続き、利用開始の必須条件（研修受講義務）を提示する A が適切です。" },
+    { k: "一文挿入(受講日程)", c: ["Training sessions will be offered on multiple dates.", "The trainer will arrive from New York tomorrow.", "Coffee and donuts will be served during break.", "The previous software will remain active until next year."], a: 0, e: "受講義務の提示に続き、受講可能な期間・日程の選択肢があることを伝える A が自然です。" },
+    { k: "接続副詞", c: ["Therefore", "However", "Otherwise", "On the contrary"], a: 0, e: "「複数の日程があるので、したがって（Therefore）都合の良い日に登録してください」という論理展開が正解です。" },
+    { k: "語彙(形容詞)", c: ["limited", "unlimited", "flexible", "temporary"], a: 0, e: "座席が「限られている・満席になり得る（limited）」ため早めの登録を促す文脈です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：製品回収（リコール）のご案内とお詫び",
+  text: `Dear Customer,
+
+Apex Appliances is voluntarily recalling its PowerMix Blender (Model #MX-200) purchased between January and June. We have identified a potential issue with the blade assembly that may cause it to loosen during operation. [1] No injuries have been reported to date, but we are taking this precaution to ensure customer safety. [2] Please stop using the product immediately. [3], you may return the unit to any authorized retailer for a full refund or a free replacement. We apologize for any [4] this may cause.`,
+  ja: `お客様へ
+
+エイペックス・アプライアンス社は、1月から6月の間にご購入いただいたパワーミックス・ブレンダー（モデル#MX-200）を自主回収いたします。使用中にブレードアセンブリ（刃の部品）が緩む可能性がある潜在的な不具合を特定いたしました。現在までに怪我の報告はありませんが、お客様の安全を最優先とし、予防措置として回収を行います。直ちに製品の使用を中止してください。また、製品をご持参いただければ、正規販売店にて全額返金または無料交換の対応をさせていただきます。ご迷惑をおかけしますことを深くお詫び申し上げます。`,
+  qs: [
+    { k: "一文挿入", c: ["No injuries have been reported to date.", "The product received a design award last year.", "New models will be released next spring.", "Our customer service team is located in Texas."], a: 0, e: "不具合の特定報告に続き、現時点での事故件数（怪我の報告ゼロ）と安全重視姿勢を説明する A が適しています。" },
+    { k: "一文挿入(使用中止要請)", c: ["Please stop using the product immediately.", "You can buy extra accessories on our website.", "The blender works best with fresh fruit.", "Please leave a review on our online store."], a: 0, e: "安全対策の告知に続き、最も緊急性の高い対応（即時使用中止の要請）を行う A が適切です。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "Instead"], a: 0, e: "使用中止の案内に加え、「返金または交換ができる」という解決策を追加提示するため Additionally が合致します。" },
+    { k: "語彙(名詞)", c: ["inconvenience", "satisfaction", "profit", "benefit"], a: 0, e: "リコールのお詫びの定型句「apologize for any inconvenience (不便に対するお詫び)」が正解です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：出張中の宿泊予約完了のご連絡",
+  text: `Dear Mr. Brooks,
+
+Your hotel reservation for your upcoming business trip to Tokyo has been successfully confirmed. You are booked at the Tokyo Grand Hotel for three nights, checking in on Tuesday, October 8, and checking out on Friday, October 11. [1] Breakfast is included in your daily room rate. [2] Please present your corporate identification card upon check-in to secure the discounted business rate. [3], if you need to modify or cancel your booking, please notify the Corporate Travel Desk at least 24 hours prior to arrival. Safe [4]!`,
+  ja: `ブルックス様
+
+東京へのご出張に関するホテルご予約が正常に完了いたしました。東京グランドホテルにて10月8日（火）チェックイン、10月11日（金）チェックアウトの3泊で手配しております。毎日の朝食は客室料金に含まれております。ビジネス特別割引料金を適用するため、チェックイン時に社員証をご提示ください。なお、予約の変更やキャンセルが必要な場合は、ご到着の少なくとも24時間前までに法人トラベルデスクへご連絡ください。どうぞお気をつけて行ってらっしゃいませ！`,
+  qs: [
+    { k: "一文挿入", c: ["Breakfast is included in your daily room rate.", "The flight to Tokyo was delayed by two hours.", "Tokyo is the capital city of Japan.", "Please turn in your passport to the manager."], a: 0, e: "宿泊日程の確定案内に続き、プランに含まれるサービス（朝食付き）を説明する A が自然です。" },
+    { k: "一文挿入(チェックイン時の手続)", c: ["Please present your corporate ID card upon check-in.", "The hotel pool is closed for maintenance.", "Dinner recommendations are available at the front desk.", "You will need to pay a cash deposit."], a: 0, e: "予約内容の補足に続き、現地チェックイン時の必要行動（社員証の提示）を指示する A が適しています。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "Therefore"], a: 0, e: "手続きの指示に加え、「キャンセル規定についての注意点」も添えるため Additionally が正解です。" },
+    { k: "定型挨拶(名詞)", c: ["travels", "meetings", "purchases", "investments"], a: 0, e: "出張者への結びの挨拶「Safe travels! (道中お気をつけて！)」が正解です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：新規クライアント獲得と担当者決定",
+  text: `To: Account Management Team
+From: Director of Sales
+Subject: New Client Onboarding — Zenith Media
+
+I am delighted to share that Zenith Media has chosen Apex Advertising as their agency of record for their upcoming summer campaign. [1] This account represents a major contract for our firm and will require seamless cross-departmental collaboration. [2] Ms. Laura Miller has been assigned as the Lead Account Executive for Zenith Media. [3], she will hold an orientation briefing this Thursday at 2:00 P.M. in Conference Room B. Please join me in congratulating Laura and supporting her in this [4] role.`,
+  ja: `アカウントマネジメントチーム各位
+差出人：営業ディレクター
+件名：新規クライアント獲得と担当者のお知らせ — ゼニス・メディア社
+
+ゼニス・メディア社が、同社の今夏キャンペーンの提携広告代理店として当社エイペックス・アドバタイジングを選定してくださったことをお知らせいたします。本アカウントは当社にとって大型契約であり、部門を超えたシームレスな連携が必要となります。ゼニス・メディア社のリード・アカウント・エグゼクティブ（主担当）にはローラ・ミラーさんが指名されました。これに伴い、彼女は今週木曜日の午後2時より会議室Bにてオリエンテーション説明会を開催いたします。ローラの着任を祝い、この新しい役割での彼女の活躍を皆でサポートしましょう。`,
+  qs: [
+    { k: "一文挿入", c: ["This account represents a major contract for our firm.", "Zenith Media was founded thirty years ago.", "The summer campaign has been postponed to winter.", "We need to order more office supplies today."], a: 0, e: "新規大型クライアントの獲得報告に続き、その契約の重要性と全社協力の必要性を強調する A が適切です。" },
+    { k: "一文挿入(担当者の指定)", c: ["Ms. Laura Miller has been assigned as Lead Account Executive.", "We are moving our agency to a bigger office.", "The client canceled the contract this morning.", "Laura will be taking a two-week vacation."], a: 0, e: "プロジェクトの重要性を説いた後、その主担当者（リード）としてローラが選ばれたことを報告する A が自然です。" },
+    { k: "接続表現", c: ["In light of this", "In spite of this", "Otherwise", "On the contrary"], a: 0, e: "主担当への就任決定を受けて「これを受けて（In light of this）」説明会を開催するという論理接続です。" },
+    { k: "語彙(形容詞)", c: ["new", "former", "unwanted", "previous"], a: 0, e: "大役に選ばれた「新しい（new）」役割・ポジションを応援する文脈です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：ベンダー（取引先）契約の終了通知",
+  text: `Dear Mr. Sterling,
+
+We are writing to formally inform you that Apex Logistics will not be renewing its service contract with Sterling Office Supplies when it expires on August 31. [1] Over the past year, our purchasing requirements have shifted toward specialized digital forms, which your company does not currently support. [2] We sincerely appreciate the reliable service you have provided over the past three years. [3] Please send your final itemized invoice by September 15 for prompt settlement. We wish your business continued [4] in the future.
+
+Sincerely,
+Procurement Manager`,
+  ja: `スターリング様
+
+8月31日に契約期間が満了いたします際、エイペックス・ロジスティクスはスターリング・オフィス・サプライ社とのサービス契約を更新しない決定をいたしましたことを正式にお知らせいたします。過去1年間で当社の購買ニーズはデジタル専用フォームへとシフトしており、貴社では現在対応されていないことが理由です。過去3年間にわたり提供していただいた信頼できるサービスに心より感謝申し上げます。迅速な決済のため、9月15日までに最終明細請求書をお送りください。貴社の今後の益々のご発展をお祈り申し上げます。`,
+  qs: [
+    { k: "一文挿入", c: ["Our requirements have shifted toward specialized digital forms.", "We were very pleased with your product prices.", "The contract was signed by both parties yesterday.", "Your office location is very convenient."], a: 0, e: "非更新の通知に続き、契約を更新しない具体的な理由（デジタル化へのニーズ変化）を明確にする A が適切です。" },
+    { k: "一文挿入(謝意)", c: ["We appreciate the reliable service you provided over three years.", "We have filed a complaint with the Better Business Bureau.", "Please return our company vehicles immediately.", "Your prices were higher than all competitors."], a: 0, e: "契約終了の理由を説明した上で、これまでの取引に対する感謝（ビジネスマナー）を述べる A が非常に自然です。" },
+    { k: "接続/指示句", c: ["Regarding final payment", "In spite of this", "Otherwise", "Similarly"], a: 0, e: "契約終了の手続きとして「最終支払いに関して（Regarding final payment）」請求書の送付を促す接続フレーズが適しています。" },
+    { k: "語彙(名詞)", c: ["success", "failure", "decline", "bankruptcy"], a: 0, e: "取引終わりの定型挨拶「今後の発展・成功（continued success）を祈る」が合致します。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：社内イントラネット障害のお詫び",
+  text: `To: All Staff
+From: IT Operations
+Subject: Intranet Service Interruption
+
+Earlier today between 2:00 P.M. and 3:30 P.M., the internal company portal experienced an unexpected connection timeout. This disruption was caused by an unexpected load spike during database optimization. [1] Engineers responded immediately to reset the database pools and restore normal operation. [2] All services are now running smoothly without data loss. [3], we advise staff to clear their browser cache if they encounter display errors. We apologize for the inconvenience and appreciate your [4].`,
+  ja: `全社員各位
+差出人：IT運用課
+件名：イントラネット障害のお詫び
+
+本日午後2時00分から午後3時30分の間、社内ポータルサイトにて予期せぬ接続タイムアウトが発生いたしました。この障害はデータベース最適化中の予期せぬ負荷スパイクによって引き起こされたものです。エンジニアが直ちに対応し、データベースプールをリセットして正常運用へと復旧させました。データ損失もなく、すべてのサービスは現在スムーズに稼働しております。なお、表示エラーが発生する場合はブラウザのキャッシュをクリアすることをお勧めいたします。ご不便をおかけしましたことをお詫び申し上げますとともに、皆様のご理解に感謝いたします。`,
+  qs: [
+    { k: "一文挿入", c: ["Engineers responded immediately to restore normal operation.", "New laptops will be distributed to sales staff tomorrow.", "The IT department will be hiring three new technicians.", "Please refrain from using personal mobile phones at work."], a: 0, e: "障害発生の報告と原因究明に続き、技術チームによる復旧作業の対応を説明する A がスムーズです。" },
+    { k: "一文挿入(復旧確認)", c: ["All services are now running smoothly without data loss.", "The office building will be closed for cleaning.", "Please submit your vacation requests by Friday.", "Internet speeds have been permanently reduced."], a: 0, e: "対応作業の報告に続き、現在の安全な稼働状態（データ損失なし）を明言する A が適切です。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "Therefore"], a: 0, e: "復旧の報告に加え、「キャッシュ消去のアドバイス」を補足追加するため Additionally が正解です。" },
+    { k: "語彙(名詞)", c: ["understanding", "refusal", "complaint", "hesitation"], a: 0, e: "障害時のお詫びと「皆様のご理解（understanding）」に対する感謝の定型文脈です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：新プロジェクトのKickoffミーティング案内",
+  text: `To: Project Orion Team
+From: Project Lead
+Subject: Orion Project Kickoff Meeting
+
+Welcome to the Project Orion team! As discussed during our quarterly planning session, this project aims to redesign our mobile banking interface. [1] Our initial kickoff meeting is scheduled for Monday, March 15, at 10:00 A.M. in Strategy Room 4. [2] During the meeting, we will outline project milestones, assign individual responsibilities, and review the timeline. [3], please review the attached project charter before Monday. I look forward to an exciting and [4] collaboration.`,
+  ja: `プロジェクト・オリオン・チーム各位
+差出人：プロジェクト・リード
+件名：オリオン・プロジェクト Kickoff ミーティングのご案内
+
+プロジェクト・オリオン・チームへようこそ！四半期計画セッションで協議しました通り、本プロジェクトは当社のモバイルバンキング・インターフェースの再設計を目的としております。キックオフ（初回）ミーティングは3月15日（月）午前10時より戦略ルーム4にて予定されています。ミーティングでは、プロジェクトのマイルストーンの概要、各自の担当責任の割り当て、タイムラインの確認を行います。月曜日までに、添付のプロジェクト憲章（説明書）をご確認いただくようお願いいたします。刺激的で実りある共同作業ができることを楽しみにしております。`,
+  qs: [
+    { k: "一文挿入", c: ["Our initial kickoff meeting is scheduled for Monday.", "The previous mobile app received very low ratings.", "Budget approvals take at least six weeks to process.", "The design team is currently working from home."], a: 0, e: "プロジェクト目的の説明に続き、初回キックオフミーティングの具体日程を提示する A が適しています。" },
+    { k: "一文挿入(会議アジェンダ)", c: ["We will outline project milestones and assign responsibilities.", "Coffee and sandwiches will be available in the cafeteria.", "The company logo was changed last month.", "New smartphones will be provided to all team members."], a: 0, e: "会議設定の案内に続き、その会議で話し合うアジェンダ（役割分担やマイルストーン）を説明する A が自然です。" },
+    { k: "接続副詞", c: ["In the meantime", "However", "Otherwise", "Instead"], a: 0, e: "「会議までの間（In the meantime）に事前に添付資料を読んでおいてください」という時間の流れを繋ぐ接続が適切です。" },
+    { k: "語彙(形容詞)", c: ["productive", "destructive", "unclear", "pointless"], a: 0, e: "「実りある・生産的な（productive）」コラボレーションを期待する文脈です。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：新製品発表プレゼンの招待",
+  text: `Dear Valued Partner,
+
+We are thrilled to invite you to the exclusive unveiling of our next-generation smart home technology, the Apex Hub Pro. The launch event will take place on Wednesday, November 8, at the Boston Convention Center. [1] Attendees will enjoy live product demonstrations, a Q&A session with our lead engineers, and a networking reception. [2] Admission is complimentary, but advance registration is required due to space limitations. [3], please reserve your ticket on our event page by October 25. We hope you will join us for this [4] milestone!`,
+  ja: `大切なお取引先様へ
+
+当社の次世代スマートホーム技術「エイペックス・ハブ・プロ」の特別発表会にご招待できますことを大変嬉しく思います。ローンチイベントは11月8日（水）にボストン・コンベンション・センターにて開催されます。参加者の皆様には、実演デモンストレーション、開発責任エンジニアとの質疑応答、交流レセプションをお楽しみいただけます。入場は無料ですが、会場の収容人数に制限があるため事前登録が必要です。10月25日までにイベントページにてチケットをご予約ください。このエキサイティングな節目に皆様がご参加いただけることを心より願っております！`,
+  qs: [
+    { k: "一文挿入", c: ["Attendees will enjoy live product demonstrations.", "Smart home products are becoming very expensive.", "The convention center is located near the airport.", "Our former CEO published a book last week."], a: 0, e: "新製品発表イベントの開催告知に続き、参加者が体験できる魅力的なプログラム（実演・交流会）を案内する A が適しています。" },
+    { k: "一文挿入(参加登録条件)", c: ["Admission is complimentary, but advance registration is required.", "Parking tickets can be validated at the registration desk.", "Photos and videos are strictly prohibited.", "Dinner will be served at a local restaurant afterwards."], a: 0, e: "イベント内容の紹介に続き、参加のための条件（無料だが事前登録必須）を伝える A がスムーズです。" },
+    { k: "接続副詞", c: ["Therefore", "However", "Otherwise", "Instead"], a: 0, e: "「登録が必要ですので、したがって（Therefore）期日までにご予約ください」という論理展開が正解です。" },
+    { k: "語彙(形容詞)", c: ["exciting", "boring", "disappointing", "routine"], a: 0, e: "自社の節目を形容する「魅力的な・エキサイティングな（exciting）」が文脈上最も合致します。" }
+  ] },
+
+{ type: "ビジネスメール", title: "件名：契約書の最終署名お願い",
+  text: `Dear Mr. Vance,
+
+Thank you for reviewing the revised draft of the service agreement. We have incorporated all the changes requested during our meeting on Tuesday, including the revised fee structure and updated delivery schedule. [1] The final document is now ready for signature. [2] Please sign the attached document electronically using the secure link provided. [3], if you need any additional clarifications before signing, please feel free to call me directly. We look forward to a successful [4].`,
+  ja: `ヴァンス様
+
+サービス合意書の改訂草案をご確認いただきありがとうございました。火曜日の打合せでご要望いただきました、修正後の料金体系や更新された納品スケジュールを含むすべての変更点を反映いたしました。最終書類の署名準備が整いました。提供されたセキュリティリンクを使用して、添付書類に電子署名を行ってください。なお、ご署名前にさらに確認が必要な点がございましたら、お気軽に私まで直接お電話ください。素晴らしいパートナーシップ（協力関係）を築けることを楽しみにしております。`,
+  qs: [
+    { k: "一文挿入", c: ["The final document is now ready for signature.", "The agreement was canceled by our legal team.", "Our office will be closed for a public holiday.", "Fee structures vary depending on the market."], a: 0, e: "改訂内容の反映報告に続き、いよいよ手続きの最終段階（署名の準備完了）を伝える A が適切です。" },
+    { k: "一文挿入(署名方法指示)", c: ["Please sign the attached document electronically.", "We need to schedule another meeting next week.", "A printed copy will be sent by mail tomorrow.", "Please remit payment before reviewing the agreement."], a: 0, e: "署名準備完了の案内に続き、具体的な署名方法（電子署名リンクの使用）を指示する A が自然です。" },
+    { k: "接続副詞", c: ["However", "Additionally", "Otherwise", "Therefore"], a: 0, e: "署名依頼の案内に加え、「ただし不明点があれば電話をください」と条件・補足を添えるため However が適しています。" },
+    { k: "語彙(名詞)", c: ["partnership", "argument", "dispute", "cancellation"], a: 0, e: "ビジネスの成功を祈る文脈で「パートナーシップ・提携関係（partnership）」が完璧です。" }
+  ] },
+
+// --- 社内告知・メモ (5文章) ---
+{ type: "社内告知", title: "件名：エレベーター点検作業のご案内",
+  text: `To: All Building Occupants
+From: Property Management
+Subject: Elevator Maintenance Notice
+
+Please be advised that mandatory safety inspections will be conducted on all passenger elevators on Saturday, March 12. The work will be performed between 7:00 A.M. and 3:00 P.M. [1] During this time, elevators will be taken out of service one at a time. At least one elevator will remain operational at all times. [2] However, wait times may be longer than usual. [3], please use the emergency stairwells for travel between lower floors. Thank you for your [4] during this essential maintenance.`,
+  ja: `ビル内滞在者各位
+差出人：不動産管理室
+件名：エレベーター点検作業のお知らせ
+
+3月12日（土）に、すべての乗用エレベーターの法定安全点検が実施されますのでお知らせいたします。作業は午前7時から午後3時の間で行われます。期間中、エレベーターは1台ずつ順番に運用停止となります。常に少なくとも1台のエレベーターは稼働状態を維持いたします。しかしながら、待ち時間が通常より長くなる可能性がございます。そのため、低層階間の移動には非常階段をご利用いただくようお願いいたします。この不可欠なメンテナンス中の皆様のご理解に感謝いたします。`,
+  qs: [
+    { k: "一文挿入", c: ["Elevators will be taken out of service one at a time.", "The main entrance will be locked all day.", "A new elevator will be installed next year.", "Please refrain from bringing bicycles into the lobby."], a: 0, e: "点検日時のお知らせに続き、作業中の具体的な影響（1台ずつの運用停止）を説明する A が適しています。" },
+    { k: "一文挿入(影響の予告)", c: ["However, wait times may be longer than usual.", "The cafeteria menu will be limited on Saturday.", "Parking fees must be paid in cash.", "Air conditioning will be turned off during the inspection."], a: 0, e: "「1台は稼働するが、待ち時間が長くなる（wait times longer）」という注意事項を補足する A が自然です。" },
+    { k: "接続副詞", c: ["Therefore", "Otherwise", "Instead", "In contrast"], a: 0, e: "「待ち時間が長くなるので、したがって（Therefore）階段を使ってください」という論理展開が正解です。" },
+    { k: "語彙(名詞)", c: ["patience", "resistance", "refusal", "complaint"], a: 0, e: "点検作業中の不便に対する「ご理解・ご辛抱（patience）」に感謝する定型表現です。" }
+  ] },
+
+{ type: "社内告知", title: "件名：社内アワード授賞式のご案内",
+  text: `To: All Employees
+From: Executive Office
+Subject: Annual Employee Recognition Awards
+
+We are excited to announce that the Annual Employee Recognition Awards Ceremony will take place on Thursday, December 12, at 5:00 P.M. in the main auditorium. This event honors team members who have demonstrated extraordinary dedication and innovation this year. [1] Nominations for categories such as Leadership Excellence and Customer Service Champion are now open. [2] Please submit your nominations via the employee intranet by November 15. [3], a dinner reception will follow the ceremony. We look forward to celebrating our [4] together!`,
+  ja: `全社員各位
+差出人：役員室
+件名：年次社員表彰式のご案内
+
+年次社員表彰アワード授賞式が、12月12日（木）午後5時よりメイン講堂にて開催されますことを喜んでお知らせいたします。本イベントは、今年目覚ましい献身と革新を示したチームメンバーを称えるものです。「優秀リーダーシップ賞」や「カスタマーサービス王者賞」などの部門の推薦受付が開始されました。11月15日までにイントラネット経由で推薦を提出してください。なお、授賞式の後には夕食レセプションが続きます。皆で成果を祝えることを楽しみにしております！`,
+  qs: [
+    { k: "一文挿入", c: ["Nominations for categories are now open.", "The auditorium was repainted last week.", "All employees will receive a salary bonus.", "The office will close early on Thursday."], a: 0, e: "表彰式の開催案内に続き、表彰部門のノミネート（推薦）開始を告知する A がスムーズです。" },
+    { k: "一文挿入(ノミネート手続)", c: ["Please submit your nominations via the intranet by Nov 15.", "Tickets can be purchased at the front desk.", "Former winners are not eligible for nominations.", "The event will be broadcast live online."], a: 0, e: "推薦受付の告知に続き、具体の提出期限と提出方法を案内する A が適切です。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "Instead"], a: 0, e: "表彰式の案内に加え、「式の後に夕食会がある」というプラス情報を追加するため Additionally が合致します。" },
+    { k: "語彙(名詞)", c: ["achievements", "failures", "complaints", "expenses"], a: 0, e: "表彰式で皆の「業績・成果（achievements）」を祝う文脈が完璧です。" }
+  ] },
+
+{ type: "社内告知", title: "件名：年末の大掃除と書類破棄の案内",
+  text: `To: All Staff
+From: Office Operations
+Subject: Annual Office Clean-Up Day
+
+In preparation for the upcoming year, our annual Office Clean-Up Day is scheduled for Friday, December 18. Staff members are asked to spend the afternoon organizing their desks, archiving files, and discarding unneeded paperwork. [1] Shredding bins for confidential documents will be placed on every floor. [2] Please ensure that all sensitive client information is properly shredded before leaving. [3], recycled paper bins should be used for general document disposal. Thank you for helping keep our workplace clean and [4].`,
+  ja: `全スタッフ各位
+差出人：オフィス運用課
+件名：年次オフィス大掃除の日のお知らせ
+
+新年に向けた準備のため、例年恒例のオフィス大掃除の日を12月18日（金）に予定しております。スタッフの皆様は、午後の時間を使ってデスクの整理、ファイルの保存、不要な書類の処分を行ってください。機密文書用のシュレッダー箱が各階に設置されます。社外秘の顧客情報は、退社前に正しくシュレッダー処理されていることを確認してください。なお、一般的な書類の処分には古紙リサイクル箱をご使用ください。職場を清潔かつ整然と（orderly）保つためのご協力に感謝いたします。`,
+  qs: [
+    { k: "一文挿入", c: ["Shredding bins for confidential documents will be placed on every floor.", "Computers should be upgraded to the latest operating system.", "The company will provide free pizza for lunch.", "New furniture will be delivered on Monday."], a: 0, e: "大掃除と書類処分の指示に続き、機密文書シュレッダー箱の設置場所を説明する A が適しています。" },
+    { k: "一文挿入(セキュリティ指示)", c: ["Please ensure all sensitive client info is properly shredded.", "Personal belongings should be taken home on Thursday.", "Window cleaners will work on the exterior.", "The filing cabinets are located in the basement."], a: 0, e: "シュレッダー箱の案内に続き、機密保護のための具体的な処理徹底を呼びかける A が自然です。" },
+    { k: "接続副詞", c: ["Meanwhile", "However", "Otherwise", "Therefore"], a: 0, e: "機密文書の処理方法を説明する一方で、「その一方で一般書類は（Meanwhile）」と区別して案内する接続表現が適切です。" },
+    { k: "語彙(形容詞)", c: ["orderly", "cluttered", "chaotic", "hazardous"], a: 0, e: "職場環境を清潔で「整然とした（orderly）」状態に保つという意味の形容詞が正解です。" }
+  ] },
+
+{ type: "社内告知", title: "件名：ビル内エアコン清掃と温度調整",
+  text: `To: All Building Employees
+From: Facilities Department
+Subject: HVAC System Cleaning and Temperature Adjustments
+
+Please be advised that annual maintenance and cleaning of the building heating, ventilation, and air conditioning (HVAC) system will take place this weekend, July 15 and 16. Technicians will clean air filters and inspect ductwork across all floors. [1] As a result, air conditioning will be temporarily turned off during the maintenance hours. [2] Temperatures in the building may be higher than normal on Monday morning as the system resets. [3], we recommend wearing lightweight clothing early next week. Thank you for your [4] and understanding.`,
+  ja: `ビル内全従業員各位
+差出人：施設管理部
+件名：空調システム清掃および温度調整のお知らせ
+
+7月15日・16日のこの週末、ビルの暖房・換気・空調（HVAC）システムの年次メンテナンスおよび清掃が行われますのでお知らせいたします。技術者が全階のエアフィルター清掃とダクト配管の点検を行います。その結果、メンテナンス時間中は空調が一時的に停止いたします。システム再起動に伴い、月曜日の朝は館内温度が通常より高くなる可能性がございます。そのため、来週前半は涼しい軽量の服装での出勤をお勧めいたします。皆様のご理解とご協力に感謝申し上げます。`,
+  qs: [
+    { k: "一文挿入", c: ["Air conditioning will be temporarily turned off during maintenance.", "The parking lot will be repaved next month.", "New coffee machines have been installed on the 3rd floor.", "Office hours will be reduced on Monday."], a: 0, e: "空調メンテナンス作業の告知に続き、作業中の館内への影響（エアコンの一時停止）を説明する A が適切です。" },
+    { k: "一文挿入(月曜朝の状況)", c: ["Temperatures in the building may be higher than normal on Monday.", "All windows must be kept open throughout the week.", "The maintenance was canceled due to technical issues.", "Staff members may work from home on Friday."], a: 0, e: "週末の作業告知に続き、週明け月曜朝の想定環境（室温が高めになる）を予告する A が自然です。" },
+    { k: "接続副詞", c: ["Therefore", "Otherwise", "However", "In contrast"], a: 0, e: "「室温が高めになるので、したがって（Therefore）涼しい服装を勧める」という論理的な接続が正解です。" },
+    { k: "語彙(定型句)", c: ["cooperation", "opposition", "complaint", "refusal"], a: 0, e: "案内の締めくくりの定番「cooperation and understanding (ご理解とご協力)」が適しています。" }
+  ] },
+
+{ type: "社内告知", title: "件名：社内カフェの営業再開と新サービス",
+  text: `To: All Staff
+From: Corporate Amenities Team
+Subject: Reopening of the Ground-Floor Cafe
+
+We are delighted to announce that the ground-floor cafe will officially reopen on Monday, September 1. Following a two-week renovation, the cafe now features an expanded seating area, free Wi-Fi, and an updated beverage menu. [1] Specialty espresso drinks and fresh pastries will be prepared daily by our new culinary team. [2] To celebrate the grand reopening, all staff members will receive a 20 percent discount on all purchases during the first week. [3], pre-ordering is now available through the company mobile app. We look forward to [4] you soon!`,
+  ja: `全スタッフ各位
+差出人：福利厚生サービスチーム
+件名：1階カフェの営業再開のお知らせ
+
+1階カフェが9月1日（月）に正式にリニューアルオープンいたしますことを喜んでお知らせいたします。2週間の改修工事を経て、カフェは座席エリアの拡張、無料Wi-Fi、更新されたドリンクメニューを備えるようになりました。新しい調理チームにより、特製エスプレッソドリンクや出来立てのペストリーが毎日提供されます。グランドオープンを記念し、最初の1週間は全スタッフを対象に全商品20パーセント割引を実施いたします。さらに、社内モバイルアプリからの事前注文も可能になりました。皆様のご利用を心よりお待ちしております！`,
+  qs: [
+    { k: "一文挿入", c: ["Specialty espresso drinks and pastries will be prepared daily.", "The cafe was permanently closed last month.", "Parking permits can be purchased at the cafe.", "Computers must be turned off during lunch."], a: 0, e: "リニューアルの概要（座席拡張等）に続き、提供されるメニューの魅力（特製コーヒー等）を説明する A が合致します。" },
+    { k: "一文挿入(オープン記念割引)", c: ["All staff will receive a 20 percent discount during the first week.", "Prices will be doubled starting next month.", "The cafe will only accept cash payments.", "Outside food is strictly prohibited in the cafe."], a: 0, e: "メニュー紹介に続き、リニューアル記念のお得なインセンティブ（初週20％引き）を告知する A がスムーズです。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "Instead"], a: 0, e: "割引キャンペーンに加え、「アプリ注文の導入」という新機能を追加発表するため Additionally が正解です。" },
+    { k: "語彙(動詞)", c: ["serving", "rejecting", "warning", "ignoring"], a: 0, e: "カフェで顧客・スタッフに「料理・サービスを提供する（serving）」が適しています。" }
+  ] },
+
+// --- ニュース記事・プレスリリース (15文章) ---
+{ type: "ニュース記事", title: "Apex社、欧州市場への事業拡大を発表",
+  text: `LONDON — Apex Logistics announced on Monday that it will expand its European operations by opening a new regional distribution center in Frankfurt. The 50,000-square-meter facility is expected to enhance delivery speeds across Western Europe. [1] Construction is scheduled to begin in June, with full operations commencing by early next year. [2] The company plans to hire over 200 local logistics workers and administrative staff. [3], Apex CEO Marcus Brody highlighted that the investment reflects strong demand for fast e-commerce fulfillment in the region. The project represents a $45 million [4].`,
+  ja: `ロンドン — エイペックス・ロジスティクスは月曜日、フランクフルトに新しい地域配送センターを開設することにより、欧州事業を拡大すると発表した。50,000平方メートルの施設により、西欧全域での配送速度が向上する見込みである。建設工事は6月に開始され、来年初めまでに全面操業を開始する予定だ。同社は地元の物流作業員や管理スタッフを200名以上採用する計画である。さらに、エイペックスの最高経営責任者（CEO）マーケス・ブロディ氏は、この投資が同地域における迅速なECフルフィルメントに対する旺盛な需要を反映したものであると強調した。本プロジェクトは4,500万ドルの投資となる。`,
+  qs: [
+    { k: "一文挿入", c: ["Construction is scheduled to begin in June.", "Frankfurt is the largest financial center in Germany.", "The company closed its London office last month.", "E-commerce sales declined significantly last quarter."], a: 0, e: "新施設開設の発表に続き、具体的な建設および稼働開始時期（6月着工）を説明する A が適しています。" },
+    { k: "一文挿入(現地雇用)", c: ["The company plans to hire over 200 local workers.", "Air freight prices have reached a record high.", "Truck drivers have gone on strike in London.", "The distribution center was damaged in a storm."], a: 0, e: "拠点設立のスケジュールに続き、地域への経済効果（200名の現地採用）を説明する A が自然です。" },
+    { k: "接続副詞", c: ["Furthermore", "However", "Otherwise", "Instead"], a: 0, e: "雇用計画の提示に加え、「さらに（Furthermore）CEOが需要の強さを強調した」と情報を付け加える接続が正解です。" },
+    { k: "語彙(名詞)", c: ["investment", "fine", "loss", "tax"], a: 0, e: "巨額の資金投入を指す $45 million investment (4,500万ドルの投資) が合致します。" }
+  ] },
+
+{ type: "ニュース記事", title: "メトロポリタン銀行、モバイルアプリを刷新",
+  text: `NEW YORK — Metropolitan Bank officially launched its completely redesigned mobile banking application today, featuring enhanced biometric security and instant transfer capabilities. The new app was developed over eighteen months based on extensive customer feedback. [1] Users can now lock lost credit cards instantly and track monthly spending with automated budgeting tools. [2] Early reviews on major app stores have been overwhelmingly positive, with users praising the intuitive user interface. [3], the bank announced that customers who download the app this month will be entered into a draw to win a gift card. The app is [4] free of charge.`,
+  ja: `ニューヨーク — メトロポリタン銀行は本日、強化された生体認証セキュリティと即時送金機能を備えた、全面再設計のモバイルバンキング・アプリケーションを正式にリリースした。新アプリは、広範な顧客フィードバックに基づき18か月かけて開発された。ユーザーは紛失したクレジットカードを即座にロックし、自動家計簿ツールで毎月の支出を追跡できるようになった。主要アプリストアでの初期レビューは圧倒的に好評で、ユーザーは直感的なユーザーインターフェースを絶賛している。さらに、同行は今月アプリをダウンロードした顧客を対象に、ギフトカードが当たる抽選を実施すると発表した。アプリは完全無料で利用可能である。`,
+  qs: [
+    { k: "一文挿入", c: ["Users can lock lost credit cards and track spending.", "The bank opened three new branches in Manhattan.", "Credit card interest rates were increased last week.", "Paper statements will no longer be mailed."], a: 0, e: "アプリ刷新の発表に続き、追加された便利な新機能（カードロックや支出追跡）を説明する A が適切です。" },
+    { k: "一文挿入(市場の好評)", c: ["Early reviews on major app stores have been overwhelmingly positive.", "The previous app was downloaded one million times.", "ATM fees will be waived for senior citizens.", "The bank was founded in 1890."], a: 0, e: "新機能の紹介に続き、リリース後のユーザーからの高評価（好意的なレビュー）を伝える A がスムーズです。" },
+    { k: "接続副詞", c: ["In addition", "However", "Otherwise", "Instead"], a: 0, e: "高評価の報告に加え、「プロモーション（抽選キャンペーン）も実施する」と追加情報を添えるため In addition が正解です。" },
+    { k: "副詞/語彙", c: ["completely", "partially", "rarely", "hardly"], a: 0, e: "アプリが「完全に・手厚く（completely）」無料であることを表す表現が適切です。" }
+  ] },
+
+{ type: "ニュース記事", title: "太陽光発電企業、過去最高益を更新",
+  text: `AUSTIN — Helios Solar Energy reported record third-quarter financial results on Thursday, driven by surging corporate demand for renewable power solutions. Net income rose by 35 percent compared to the same period last year, reaching $82 million. [1] Revenue growth was particularly strong in the commercial roofing segment. [2] Company executives attributed the success to improved manufacturing efficiency and falling raw material costs. [3], Helios announced plans to construct a second manufacturing facility in Texas. The stock price rose 8 percent following the [4].`,
+  ja: `オースティン — ヘリオス・ソーラー・エナジーは木曜日、企業による再生可能電力ソリューションへの需要急増に支えられ、過去最高の第3四半期決算を発表した。純利益は前年同期比35パーセント増の8,200万ドルに達した。増収は特に商業用屋根設置部門で目立った。会社の幹部らは、この成功を製造効率の向上と原材料コストの低下によるものだとした。さらに、ヘリオス社はテキサス州に第2製造施設を建設する計画を発表した。発表を受けて同社の株価は8パーセント上昇した。`,
+  qs: [
+    { k: "一文挿入", c: ["Revenue growth was particularly strong in commercial roofing.", "Solar panels are becoming harder to recycle.", "The company founder sold his shares last month.", "Electricity prices decreased nationwide."], a: 0, e: "過去最高益の発表に続き、どの部門が収益増加を牽引したかを説明する A が適しています。" },
+    { k: "一文挿入(増益の理由)", c: ["Executives attributed success to manufacturing efficiency.", "The company experienced severe supply chain delays.", "A new tax on renewable energy was introduced.", "The main competitor went out of business."], a: 0, e: "業績好調のデータ提示に続き、その成功をもたらした内部的要因（製造効率と原料安）を解説する A が自然です。" },
+    { k: "接続副詞", c: ["In addition", "However", "Otherwise", "Instead"], a: 0, e: "好決算の報告に加え、「新しい工場の建設計画」という前向きな新事業展開を付加するため In addition が正解です。" },
+    { k: "語彙(名詞)", c: ["announcement", "cancellation", "refusal", "apology"], a: 0, e: "一連の好材料の「発表（announcement）」を受けて株価が上昇したという文脈です。" }
+  ] },
+
+{ type: "ニュース記事", title: "地方都市における新しい美術館の開館",
+  text: `DENVER — The Denver Modern Art Museum opened its doors to the public today following a three-year, $60 million construction project. Designed by world-renowned architect Kenneth Cole, the futuristic building features glass galleries and an outdoor sculpture garden. [1] More than 5,000 visitors attended the grand opening ceremony on Saturday. [2] The museum houses a permanent collection of over 2,000 contemporary artworks. [3], special exhibitions featuring international artists will be hosted on a quarterly basis. City officials expect the landmark to boost local [4] significantly.`,
+  ja: `デンバー — デンバー現代美術館は、3年におよぶ6,000万ドルの建設プロジェクトを経て、本日一般公開を開始した。世界的に著名な建築家ケネス・コール氏によって設計された未来的な建物は、ガラス張りのギャラリーと屋外彫刻庭園を備えている。土曜日のグランドオープニング式典には5,000人以上の来場者が詰めかけた。同美術館には、2,000点以上の現代美術作品の常設コレクションが収蔵されている。さらに、国際的なアーティストをフィーチャーした特別展覧会が四半期ごとに開催される予定である。市の高官らは、このランドマーク（象徴的建築）が地元の観光産業を大幅に活性化させると期待している。`,
+  qs: [
+    { k: "一文挿入", c: ["More than 5,000 visitors attended the grand opening ceremony.", "Tickets must be purchased six months in advance.", "The old museum building was converted into a library.", "Modern art is often misunderstood by the public."], a: 0, e: "美術館の一般公開発表に続き、オープン初日の大盛況ぶり（5,000人来場）を伝える A が適しています。" },
+    { k: "一文挿入(収蔵品の紹介)", c: ["The museum houses a permanent collection of over 2,000 artworks.", "Parking around the museum is completely free.", "The gift shop sells art supplies and souvenirs.", "Architect Kenneth Cole won an award last year."], a: 0, e: "開館の成功報告に続き、同美術館が誇る常設展示作品の充実ぶりを説明する A が自然です。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "Instead"], a: 0, e: "常設展示の紹介に加え、「さらに（Additionally）特別展も四半期ごとに開催される」と追加魅力を伝える接続が正解です。" },
+    { k: "語彙(名詞)", c: ["tourism", "pollution", "crime", "unemployment"], a: 0, e: "美術館の誕生が地域の「観光・観光業（tourism）」を促進するという文脈です。" }
+  ] },
+
+{ type: "ニュース記事", title: "EVメーカー、全米充電ネットワークの構築",
+  text: `DETROIT — Volt Motors announced a strategic partnership with National Power Corp today to construct over 2,000 ultra-fast electric vehicle charging stations along major U.S. highways by 2026. The initiative aims to ease range anxiety among drivers considering a switch to electric transport. [1] Each station will feature high-power chargers capable of adding 200 miles of range in just fifteen minutes. [2] The stations will be compatible with vehicles from all major manufacturers, not just Volt models. [3], renewable solar power will be used to run the facilities wherever possible. Construction begins [4] next month.`,
+  ja: `デトロイト — ヴォルト・モータースは本日、2026年までに全米の主要ハイウェイ沿いに2,000か所以上の超急速電気自動車充電ステーションを建設するため、ナショナル・パワー社との戦略的提携を発表した。この取り組みは、電気輸送への切り替えを検討しているドライバーの航続距離に対する不安（レンジ・アングザエティ）を和らげることが目的だ。各ステーションには、わずか15分で200マイル分の航続距離を充電できる高出力充電器が導入される。当ステーションは、ヴォルト社のモデルだけでなく、すべての主要メーカーの車両と互換性を持つ。さらに、可能な限り施設運用には再生可能な太陽光発電が使用される。建設は来月早々に着工される。`,
+  qs: [
+    { k: "一文挿入", c: ["Each station will feature high-power chargers.", "Gasoline prices have stabilized in recent weeks.", "Electric cars require less maintenance than traditional cars.", "Volt Motors was founded ten years ago in Detroit."], a: 0, e: "充電ネットワーク構築の目標に続き、建設される充電ステーションのスペック（急速充電性能）を説明する A が合致します。" },
+    { k: "一文挿入(他社互換性)", c: ["The stations will be compatible with all major vehicle brands.", "Drivers must pay a monthly membership fee.", "Food courts will be built next to each station.", "The charging cables are manufactured in Germany."], a: 0, e: "充電器の性能説明に続き、自社専用ではなく全メーカー対応（互換性あり）であることを説明する A がスムーズです。" },
+    { k: "接続副詞", c: ["Furthermore", "However", "Otherwise", "Instead"], a: 0, e: "互換性の高さに加え、「さらに環境面でもソーラー電力を活用する」と追加特徴を提示するため Furthermore が正解です。" },
+    { k: "語彙(副詞)", c: ["early", "late", "rarely", "hardly"], a: 0, e: "着工時期「来月早々（early next month）」を表す語彙が適しています。" }
+  ] },
+
+{ type: "ニュース記事", title: "食品大手、プラスチック包装の削減を宣言",
+  text: `CHICAGO — Global Foods Inc. committed to reducing its use of virgin plastic packaging by 50 percent across all product lines by 2030. The food conglomerate will transition to 100 percent recyclable, compostable, or reusable materials. [1] Environmental organizations welcomed the decision, calling it a major milestone for the food industry. [2] To achieve this goal, the company is investing $100 million in sustainable packaging research and development over the next five years. [3], Global Foods will partner with local recycling facilities to improve waste collection. The CEO expressed confidence in achieving the [4] target.`,
+  ja: `シカゴ — グローバル・フーズ社は、2030年までにすべての製品ラインにおいてバージン・プラスチック包装の使用量を50パーセント削減することを誓約した。同食品コングロマリットは、100パーセントリサイクル可能、堆肥化可能、あるいは再利用可能な素材へと移行する。環境団体はこの決定を歓迎し、食品業界にとっての大きな節目と評した。この目標を達成するため、同社は今後5年間で持続可能な包装の研究開発に1億ドルを投資する。さらに、グローバル・フーズ社は廃棄物収集を改善するため地元のリサイクル施設と提携する予定だ。CEOは目標達成への強い自信を表明した。`,
+  qs: [
+    { k: "一文挿入", c: ["Environmental organizations welcomed the decision.", "Plastic bottles were invented in the 19th century.", "Food prices are expected to rise next month.", "The company posted a financial loss last quarter."], a: 0, e: "環境配慮宣言に続き、外部の環境団体からの好意的な受け止め（歓迎の声）を報告する A が自然です。" },
+    { k: "一文挿入(具体的な投資)", c: ["The company is investing $100 million in sustainable packaging R&D.", "New factories will be built in South America.", "Employees will receive extra training on safety.", "Consumers prefer glass jars over plastic containers."], a: 0, e: "目標設定に続き、それを実現するための資金投入（1億ドルのR&D投資）を提示する A が適切です。" },
+    { k: "接続副詞", c: ["In addition", "However", "Otherwise", "Instead"], a: 0, e: "研究開発投資に加え、「リサイクル施設との提携」も行うという追加の施策を繋ぐため In addition が正解です。" },
+    { k: "語彙(形容詞)", c: ["ambitious", "impossible", "meaningless", "unwanted"], a: 0, e: "高く設定された「雄大な・意欲的な（ambitious）」目標という定型文脈です。" }
+  ] },
+
+{ type: "ニュース記事", title: "主要都市間における高速鉄道網の開通",
+  text: `MADRID — Spain officially inaugurated a new high-speed rail corridor connecting Madrid and Valencia today, cutting travel time between the two major cities to just under 90 minutes. The $2.5 billion infrastructure project features modern trains traveling at speeds up to 300 km/h. [1] Transport officials expect the line to carry over three million passengers annually. [2] The new service provides a faster and more eco-friendly alternative to regional air travel. [3], ticket prices have been structured to remain competitive with highway bus fares. Regular passenger service begins [4] tomorrow.`,
+  ja: `マドリード — スペインは本日、マドリードとバレンシアを結ぶ新しい高速鉄道回廊を正式に開通させ、これら二大都市間の移動時間を90分未満へと短縮した。25億ドルのインフラプロジェクトは、最高時速300kmで走る最新型列車を導入している。交通当局は、同路線が年間300万人以上の乗客を輸送すると見込んでいる。この新サービスは、地域の航空移動に代わるより高速で環境に優しい選択肢を提供する。さらに、チケット料金は高速バス料金に対抗できるよう競争力のある設定となっている。定期旅客営業は明日早朝より開始される。`,
+  qs: [
+    { k: "一文挿入", c: ["Transport officials expect the line to carry 3 million passengers.", "Valencia is famous for its Mediterranean beaches.", "Train conductors undergo rigorous safety training.", "Air travel has become much cheaper this decade."], a: 0, e: "高速鉄道の開通発表とスペックに続き、見込まれる年間利用客数を説明する A が適しています。" },
+    { k: "一文挿入(環境・利便性の利点)", c: ["The service provides a faster, eco-friendly alternative to air travel.", "The old railway station was permanently closed.", "Construction took two years longer than expected.", "Passengers are allowed two bags free of charge."], a: 0, e: "乗客予測に続き、飛行機移動と比較した本サービス独自のメリット（速さと環境負荷の低さ）を伝える A がスムーズです。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "Instead"], a: 0, e: "利点（速さ・環境）に加え、「運賃の安さ・競争力」もアピールするため Additionally が正解です。" },
+    { k: "副詞/語彙", c: ["early", "late", "rarely", "hardly"], a: 0, e: "営業開始が「明日早朝（early tomorrow）」から始まるという自然な文脈です。" }
+  ] },
+
+{ type: "ニュース記事", title: "ソフトウェア大手、サイバーセキュリティ企業を買収",
+  text: `SEATTLE — Apex Software completed its acquisition of GuardTech Solutions for $1.2 billion in cash on Friday. The deal will integrate GuardTech's cutting-edge cloud security algorithms directly into Apex's enterprise software suite. [1] GuardTech's 300 employees will join Apex's cybersecurity division immediately. [2] Industry analysts view the acquisition as a strategic move to counter growing network security threats. [3], Apex reassured existing GuardTech clients that their service contracts will be honored without interruption. The transaction received full regulatory [4] last month.`,
+  ja: `シアトル — エイペックス・ソフトウェアは金曜日、ガードテック・ソリューションズ社を12億ドルの現金で買収完了した。この取引により、ガードテック社の最先端クラウドセキュリティ・アルゴリズムがエイペックス社の企業向けソフトウェアスイートに直接統合される。ガードテック社の従業員300名は直ちにエイペックス社のサイバーセキュリティ部門に合流する。業界アナリストらは、この買収を激化するネットワークセキュリティの脅威に対抗するための戦略的転換と見ている。さらに、エイペックス社は既存のガードテック顧客に対し、サービス契約が中断なく継続されることを保証した。なお、本取引は先月、規制当局の完全な承認を得ている。`,
+  qs: [
+    { k: "一文挿入", c: ["GuardTech's 300 employees will join Apex's security division.", "GuardTech was founded in 2010 in Boston.", "Apex Software stock declined by two percent on Friday.", "Cloud computing has revolutionized office work."], a: 0, e: "買収完了と技術統合の発表に続き、買収された企業の従業員の今後の処遇（統合先）を説明する A が自然です。" },
+    { k: "一文挿入(市場の評価)", c: ["Analysts view the acquisition as a strategic move.", "The software market is facing severe competition.", "Cybersecurity threats have decreased significantly this year.", "Apex announced plans to build a new data center."], a: 0, e: "組織統合の発表に続き、この買収に対する業界アナリストからの肯定的・戦略的評価を説明する A が適切です。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "Instead"], a: 0, e: "買収の狙いの説明に加え、「既存顧客への契約継続の保証」も付け加えるため Additionally が正解です。" },
+    { k: "語彙(名詞)", c: ["approval", "refusal", "rejection", "fine"], a: 0, e: "買収取引が規制当局から「承認（approval）」を受けたという文脈です。" }
+  ] },
+
+{ type: "ニュース記事", title: "製薬大手、新薬の臨床試験で良好な成果",
+  text: `LONDON — BioMed Therapeutics announced positive results from Phase 3 clinical trials for its new asthma medication, RespiClear, on Wednesday. The trials, involving over 2,000 patients across Europe, demonstrated a 40 percent reduction in severe respiratory symptoms. [1] No significant side effects were observed during the six-month study period. [2] The company plans to submit applications for regulatory approval in the U.S. and Europe early next year. [3], if approved, RespiClear could reach pharmacy shelves by late 2026. Company stock reached an all-time [4] following the announcement.`,
+  ja: `ロンドン — バイオメド・セラピューティクス社は水曜日、同社の新しい喘息治療薬「レスピクリア」の第3相臨床試験で良好な結果が得られたと発表した。欧州の2,000名以上の患者が参加した本試験では、重度の呼吸器症状が40パーセント減少したことが示された。6か月間の試験期間中、重大な副作用は観察されなかった。同社は来年初めにも米欧で規制当局への承認申請を提出する計画である。さらに、承認されれば、レスピクリアは2026年後半までに薬局の棚（店頭）に並ぶ可能性がある。発表を受けて同社の株価は過去最高値を更新した。`,
+  qs: [
+    { k: "一文挿入", c: ["No significant side effects were observed during the study.", "Asthma is a common condition affecting millions.", "The pharmaceutical industry is heavily regulated.", "BioMed opened a new research lab in Paris last month."], a: 0, e: "新薬の効果（症状40％減少）に続き、安全性の証明（重大な副作用なし）を説明する A が適しています。" },
+    { k: "一文挿入(今後の申請予定)", c: ["The company plans to submit applications for approval next year.", "Doctors recommend taking daily exercise for respiratory health.", "The medication will be manufactured in Germany.", "Trial participants were paid a fixed stipend."], a: 0, e: "良好な試験結果に続き、製品化に向けた次の手続き（承認申請の提出予定）を説明する A がスムーズです。" },
+    { k: "接続副詞", c: ["Furthermore", "However", "Otherwise", "Instead"], a: 0, e: "申請予定に加え、「承認されれば発売時期はいつ頃か」と先の展望を追加提示するため Furthermore が合致します。" },
+    { k: "語彙(名詞/表現)", c: ["high", "low", "loss", "record"], a: 0, e: "株価が「過去最高値（all-time high）」に達したという定番の表現です。" }
+  ] },
+
+{ type: "ニュース記事", title: "都市部における新しい公園緑地の完成",
+  text: `CHICAGO — The City Parks Department dedicated the new 20-acre Riverfront Park today, converting a former industrial brownfield into a vibrant green public space. The $18 million project features walking trails, an outdoor amphitheater, and a children's splash pad. [1] More than 300 native trees and thousands of flowering shrubs were planted throughout the site. [2] Mayor Sarah Jenkins commended community volunteers who contributed hundreds of hours toward park design and planting. [3], the park features sustainable stormwater management systems to prevent flooding. The park is open [4] to the public from sunrise to sunset.`,
+  ja: `シカゴ — 市公園局は本日、20エーカーの新しいリバーフロント・パークを開園し、かつての工業跡地を活気ある緑の公共空間へと変貌させた。1,800万ドルのプロジェクトには、遊歩道、屋外音楽堂、子供向け水遊び広場が備わっている。敷地全体には300本以上の自生樹木と数千本の花つける低木が植えられた。サラ・ジェンキンス市長は、公園の設計や植樹に何百時間も貢献した地域ボランティアたちを称賛した。さらに、同公園には洪水態を防ぐ持続可能な雨水管理システムが備わっている。公園は日の出から日没まで毎日一般に公開される。`,
+  qs: [
+    { k: "一文挿入", c: ["More than 300 native trees were planted throughout the site.", "Industrial waste was cleared from the river last year.", "Chicago is home to many famous skyscrapers.", "Construction of the nearby highway has been delayed."], a: 0, e: "公園の設備概要に続き、植栽（300本の樹木）などの緑化について触れる A がスムーズです。" },
+    { k: "一文挿入(ボランティアへの謝意)", c: ["Mayor Jenkins commended volunteers who contributed hundreds of hours.", "Concerts will be held at the amphitheater every weekend.", "Parking fees at the park are $5 per hour.", "The park was designed by an architect from New York."], a: 0, e: "完成した公園の紹介に続き、建設・整備に尽力した地域ボランティアへの市長の感謝を伝える A が自然です。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "Instead"], a: 0, e: "魅力的な施設や緑に加え、「さらに雨水管理という環境機能も備えている」と追加特徴を説明するため Additionally が適しています。" },
+    { k: "副詞/語彙", c: ["daily", "rarely", "hardly", "monthly"], a: 0, e: "公園が「毎日（daily）」開園されていることを表す副詞が正解です。" }
+  ] },
+
+{ type: "ニュース記事", title: "電子書籍の利用率増加に関する市場調査報告",
+  text: `SAN FRANCISCO — A new report by Publishing Insights revealed that digital audiobook and e-book downloads grew by 22 percent nationwide over the past year. The shift is largely driven by smartphones and subscriptions that offer unlimited access to digital libraries. [1] Print book sales remained stable, indicating that digital formats are expanding the overall reading market rather than replacing physical books. [2] Industry analysts predict that digital reading will continue to gain popularity among younger demographics. [3], major publishers are increasing investments in digital content production. The full report is [4] online.`,
+  ja: `サンフランシスコ — パブリッシング・インサイツ社の新しい調査報告によると、過去1年間でデジタルオーディオブックと電子書籍のダウンロード数が全国で22パーセント増加したことが明らかになった。この変化は、主にスマートフォンやデジタルライブラリへの無制限アクセスを提供するサブスクリプションによって推進されている。紙の書籍の売上は安定したままであり、デジタルフォーマットが紙の試みを置き換えるのではなく、読書市場全体を拡大していることを示している。業界アナリストは、デジタル読書が若い世代の間で引き続き人気を集めると予測している。これを受けて、大手出版社はデジタルコンテンツ制作への投資を増やしている。レポート全文はオンラインで閲覧可能である。`,
+  qs: [
+    { k: "一文挿入", c: ["Print book sales remained stable despite the digital growth.", "Libraries are closing down due to budget cuts.", "Paper prices reached a record high last month.", "Authors are earning less money than in the past."], a: 0, e: "電子書籍の急成長の報告に続き、「それにもかかわらず紙の書籍の売上も安定している」という対照的で重要なデータを補足する A が適切です。" },
+    { k: "一文挿入(将来予測)", c: ["Analysts predict digital reading will continue to gain popularity.", "Smartphone batteries have improved significantly.", "Bookstores are offering free coffee to customers.", "Audiobooks are recorded by professional actors."], a: 0, e: "現在の売上データ分析に続き、今後の将来市場予測（若者層でのさらなる普及）を説明する A が自然です。" },
+    { k: "接続表現", c: ["In response", "In spite of this", "Otherwise", "On the contrary"], a: 0, e: "「この傾向・予測を受けて（In response）」出版社が投資を増やしているという論理接続が正解です。" },
+    { k: "語彙(形容詞/受動態)", c: ["available", "forbidden", "destroyed", "canceled"], a: 0, e: "レポートがオンラインで「利用可能・閲覧可能（available）」であるという文脈です。" }
+  ] },
+
+{ type: "ニュース記事", title: "高級ホテルチェーン、アジア市場での新規開業計画",
+  text: `SINGAPORE — Grand Horizon Hotels announced plans to open six luxury resort properties across Southeast Asia by 2028, targeting rising international tourism in the region. The expansion includes new flagship hotels in Bali, Phuket, and Vietnam. [1] Each property will feature eco-friendly architecture, world-class spa facilities, and fine dining restaurants. [2] The $300 million investment is expected to create over 1,500 hospitality jobs across the region. [3], Grand Horizon announced a loyalty partnership with Asia Pacific Airlines. The first resort is scheduled to open [4] next year.`,
+  ja: `シンガポール — グランド・ホライズン・ホテルズは、東南アジア地域で増加する国際観光需要をターゲットとし、2028年までに同地域で6軒の高級リゾート物件を開業する計画を発表した。この拡大には、バリ、プーケット、ベトナムでの新しいフラッグシップホテルが含まれている。各ホテルは、環境に配慮した建築、世界クラスのスパ施設、ファインダイニング・レストランを備える。3億ドルの投資により、地域全体で1,500以上のホスピタリティ関連の雇用が創出される見込みだ。さらに、グランド・ホライズン社はアジア・パシフィック航空とのマイレージ・ロイヤルティ提携を発表した。最初のリゾートは来年初頭にオープンする予定である。`,
+  qs: [
+    { k: "一文挿入", c: ["Each property will feature eco-friendly architecture and spas.", "Southeast Asia is known for its tropical climate.", "Hotel room rates have increased due to inflation.", "Air travel was disrupted by a volcanic eruption."], a: 0, e: "新規ホテル出店計画の発表に続き、各ホテル施設のアメニティや特徴（エコ建築やスパ）を説明する A がスムーズです。" },
+    { k: "一文挿入(経済効果)", c: ["The $300 million investment is expected to create 1,500 jobs.", "Construction materials will be imported from Europe.", "The company was founded fifty years ago in London.", "Tourists are advised to carry local currency."], a: 0, e: "ホテルの魅力を紹介した上で、巨額の投資規模と雇用創出効果（1,500名の雇用）を伝える A が自然です。" },
+    { k: "接続副詞", c: ["In addition", "However", "Otherwise", "Instead"], a: 0, e: "ホテルの出店計画に加え、「航空会社との提携」も追加発表するため In addition が合致します。" },
+    { k: "副詞/語彙", c: ["early", "late", "rarely", "hardly"], a: 0, e: "オープン予定時期「来年初頭（early next year）」を表す語彙が適しています。" }
+  ] },
+
+{ type: "ニュース記事", title: "EVバッテリー回収リサイクル施設の着工",
+  text: `BERLIN — GreenTech Recycling broke ground on Europe's largest lithium-ion battery recycling facility in Leipzig today. The state-of-the-art plant will process up to 20,000 metric tons of used electric vehicle batteries annually, recovering valuable metals like cobalt, nickel, and lithium. [1] The recovered materials will be supplied back to European battery manufacturers to create a closed-loop supply chain. [2] Environmental officials praised the project as a critical step toward reducing reliance on raw metal mining. [3], the facility will operate on 100 percent renewable energy. Full commercial operation is slated for [4] 2026.`,
+  ja: `ベルリン — グリーンテック・リサイクリング社は本日、ライプツィヒにて欧州最大の再充電式リチウムイオンバッテリー・リサイクル施設の着工式を行った。最先端の工場は、年間最大20,000トンの使用済み電気自動車バッテリーを処理し、コバルト、ニッケル、リチウムなどの価値ある金属を回収する。回収された原料は欧州のバッテリーメーカーへ再供給され、クローズド回路のサプライチェーンを構築する。環境当局の高官らは、原金属の採掘への依存を減らすための重要な一歩としてこのプロジェクトを称賛した。さらに、当施設は100パーセント再生可能エネルギーで稼働する。完全な商業運転は2026年半ばに予定されている。`,
+  qs: [
+    { k: "一文挿入", c: ["Recovered materials will be supplied back to battery makers.", "Electric cars are becoming more popular in Germany.", "Cobalt prices have fluctuated wildly on commodity markets.", "The plant will hire fifty chemical engineers."], a: 0, e: "バッテリー回収能力の説明に続き、回収された希少金属の再利用（循環型サプライチェーン）を説明する A が適切です。" },
+    { k: "一文挿入(環境的意義)", c: ["Officials praised the project as a step toward reducing mining.", "Leipzig is located in eastern Germany.", "Traditional lead-acid batteries are easier to recycle.", "The construction site was formerly a coal mine."], a: 0, e: "循環型モデルの提示に続き、採掘削減という環境面での大きな意義を認める当局の称賛 A がスムーズです。" },
+    { k: "接続副詞", c: ["Furthermore", "However", "Otherwise", "Instead"], a: 0, e: "リサイクル事業の価値に加え、「施設自体も再生可能エネルギー100％で動く」と環境配慮を補足するため Furthermore が正解です。" },
+    { k: "語彙(時期指示)", c: ["mid-", "pre-", "post-", "non-"], a: 0, e: "「2026年半ば（mid-2026）」を表す接頭語/表現が文脈上合致します。" }
+  ] },
+
+{ type: "ニュース記事", title: "地方空港の国際ターミナル拡張工事完了",
+  text: `BRISBANE — Brisbane International Airport celebrated the completion of its $200 million terminal expansion project today, doubling its capacity to handle international flights. The updated terminal features ten new boarding gates, expanded duty-free shopping areas, and automated passport control kiosks. [1] Airport officials expect the upgrade to attract new direct flights from Asia and North America. [2] The expansion is projected to generate $500 million in regional economic benefits over the next decade. [3], airport management confirmed that passenger service fees will remain unchanged. Regular operations in the new wing begin [4].`,
+  ja: `ブリスベン — ブリスベン国際空港は本日、2億ドルをかけたターミナル拡張プロジェクトの完了を祝い、国際線を処理する能力を2倍に引き上げた。更新されたターミナルには、10か所の新しい搭乗ゲート、拡張された免税店エリア、自動出入国審査キオスクが備わっている。空港関係者は、このアップグレードによりアジアや北米からの新しい直行便が誘致されると期待している。この拡張により、今後10年間で5億ドルの地域経済効果が生み出されると予測されている。さらに、空港管理側は旅客サービス利用料が据え置きのままであることを確認した。新エリアでの通常の運用は明日から始まる。`,
+  qs: [
+    { k: "一文挿入", c: ["Officials expect the upgrade to attract new direct flights.", "Brisbane is the capital city of Queensland.", "Duty-free items include perfume and cosmetics.", "Flight delays were common during the construction phase."], a: 0, e: "ターミナル拡張・新設備の紹介に続き、拡張がもたらす最大の成果（新規直行便の誘致期待）を述べる A が適切です。" },
+    { k: "一文挿入(経済波及効果)", c: ["The expansion is projected to generate $500 million for the region.", "Passengers are advised to arrive three hours before departure.", "A new runway is scheduled to be constructed next year.", "The airport was closed temporarily during the ceremony."], a: 0, e: "直行便誘致の期待に続き、地域経済に与えるインパクト（5億ドルの経済効果）を説明する A が自然です。" },
+    { k: "接続副詞", c: ["In addition", "However", "Otherwise", "Instead"], a: 0, e: "経済効果に加え、「さらに利用料も据え置きである」と利用者へのプラス還元を追加報告するため In addition が正解です。" },
+    { k: "副詞/語彙", c: ["tomorrow", "yesterday", "rarely", "hardly"], a: 0, e: "「明日（tomorrow）」から新翼が運用開始されるという文脈です。" }
+  ] },
+
+{ type: "ニュース記事", title: "通信大手、5G通信網の全米カバー率達成",
+  text: `DALLAS — Apex Wireless announced today that its high-speed 5G network now covers over 95 percent of the U.S. population, achieving its infrastructure goal six months ahead of schedule. The telecommunications giant invested over $10 billion in network deployment over the past three years. [1] The network expansion provides ultra-fast mobile internet access to rural and suburban communities previously lacking high-speed connectivity. [2] Independent testing firm TechMetrics ranked Apex Wireless as the fastest mobile network in the nation. [3], the company announced plans to expand its 5G coverage to rural areas. Network upgrades will continue [4] next year.`,
+  ja: `ダラス — エイペックス・ワイヤレスは本日、同社の高速5Gネットワークが全米人口の95パーセント以上をカバーするに至り、インフラ目標を予定より6か月前倒しで達成したと発表した。この大手通信会社は、過去3年間でネットワーク導入に100億ドル以上を投資してきた。このネットワーク拡張により、これまで高速接続が不足していた地方や郊外のコミュニティに超高速モバイルインターネット・アクセスが提供される。独立調査会社テックメトリックスは、エイペックス・ワイヤレスを全米で最も速いモバイルネットワークに格付けした。さらに、同社は地方部への5Gカバー率拡大計画も発表した。ネットワークのアップグレードは来年も継続して行われる。`,
+  qs: [
+    { k: "一文挿入", c: ["The expansion provides fast internet to rural communities.", "Smartphones are becoming more expensive every year.", "The company headquarters is located in downtown Dallas.", "3G networks will be shut down by the end of the month."], a: 0, e: "5G全米カバー達成の発表に続き、これまで不便だった地方・郊外地域への社会的貢献を説明する A が適切です。" },
+    { k: "一文挿入(第三者からの高評価)", c: ["Testing firm TechMetrics ranked Apex as the fastest network.", "Customers can upgrade their smartphones at any local store.", "The CEO gave a speech at the mobile World Congress.", "Data plans include unlimited streaming for video."], a: 0, e: "自社の達成発表に続き、第三者機関（独立調査会社）からの高い評価・全米1位の格付けを添える A が自然です。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "Instead"], a: 0, e: "実績と高評価に加え、「さらに地方部へのカバー拡大を続ける」と前向きな計画を追加するため Additionally が正解です。" },
+    { k: "語彙(前置詞/時期)", c: ["throughout", "despite", "without", "unlike"], a: 0, e: "来年「を通じて（throughout next year）」アップグレードが続くという表現が正解です。" }
+  ] },
+
+// --- 広告・案内・カスタマーサービス (10文章) ---
+{ type: "広告・案内", title: "サンライズ・フィットネスクラブ 会員募集",
+  text: `Looking to get in shape this year? Sunrise Fitness Club offers a wide range of classes, from yoga to strength training. All of our trainers are certified professionals who will design a program that fits your individual goals. [1] We are currently running a special promotion for new members. Sign up before December 31 and receive your first month completely free! [2] In addition, the club is open 24 hours a day, so you can exercise whenever it suits your busy schedule. [3] Visit our website or stop by the front desk to [4] more about our membership options today!`,
+  ja: `今年こそ体を鍛えたいとお考えですか？サンライズ・フィットネスクラブでは、ヨガから筋力トレーニングまで幅広いクラスをご用意しています。当クラブのトレーナーは全員認定を受けた専門家で、個々の目標に合ったプログラムを作成いたします。現在、新規会員様向けの特別キャンペーンを実施中です。12月31日までにご入会いただくと、最初の1か月が完全に無料になります！さらに、クラブは24時間営業ですので、忙しいスケジュールに合わせていつでも運動できます。会員プランの詳細は、本日ウェブサイトをご覧いただくかフロントまでお越しください！`,
+  qs: [
+    { k: "一文挿入", c: ["We are currently running a special promotion for new members.", "The club was founded twenty years ago in Boston.", "Parking space is limited to twenty vehicles.", "Yoga mats can be rented for a small fee."], a: 0, e: "トレーナーや環境の紹介に続き、入会を促す「特別キャンペーン（初月無料）」の案内に繋げる A が適切です。" },
+    { k: "接続副詞", c: ["In addition", "However", "Otherwise", "Instead"], a: 0, e: "初月無料キャンペーンに加えて「24時間営業である」という追加の強みをアピールするため In addition が正解です。" },
+    { k: "一文挿入(見学・問い合わせ呼びかけ)", c: ["Visit our website or stop by the front desk today.", "The swimming pool is closed on Mondays for cleaning.", "Personal training sessions must be booked in advance.", "We offer discounts for senior citizens."], a: 0, e: "魅力的な条件を伝えた後、最後の行動喚起（Webを見るかフロントへ来てください）を行う A が自然です。" },
+    { k: "語彙(動詞)", c: ["learn", "teach", "lend", "forget"], a: 0, e: "learn more about ~ (〜についてもっと知る・詳細を確認する) の定型文脈です。" }
+  ] },
+
+{ type: "広告・案内", title: "クラウドストレージ「DataVault」の機能紹介",
+  text: `Is your business prepared for sudden data loss? DataVault Cloud Backup offers automated, continuous protection for all your critical files. Our military-grade encryption ensures that your company data remains completely secure at all times. [1] Access your documents seamlessly from any device, anywhere in the world. [2] If you ever lose a file, our instant recovery tool restores your data in seconds. [3], we offer a 30-day free trial with no credit card required. Visit datavault.com today to [4] your free account!`,
+  ja: `貴社は突然のデータ損失への備えができていますか？「DataVault（データボルト）」クラウドバックアップは、すべての重要なファイルに対して自動かつ継続的な保護を提供します。当社の軍用グレードの暗号化により、貴社のデータは常に完全に安全に保たれます。世界中どこからでも、あらゆるデバイスから書類にスムーズにアクセス可能です。万が一ファイルを紛失した場合でも、即時復元ツールが数秒でデータを元に戻します。さらに、クレジットカード登録不要の30日間無料トライアルをご用意しております。今すぐ datavault.com にアクセスして、無料アカウントを作成しましょう！`,
+  qs: [
+    { k: "一文挿入", c: ["Access your documents seamlessly from any device.", "Computer hardware is becoming cheaper every year.", "Our customer service phone number is listed below.", "Data storage was invented decades ago."], a: 0, e: "暗号化とセキュリティの高さに続き、利便性（どの端末からでもアクセス可能）をアピールする A が適しています。" },
+    { k: "一文挿入(復元機能の強み)", c: ["If you lose a file, our recovery tool restores data in seconds.", "We have over one hundred employees in our Chicago office.", "Software updates are released every Tuesday.", "Laptops should be kept in a cool place."], a: 0, e: "アクセス性に続き、万が一のデータ紛失時の強み（数秒での即時復元）を説明する A が自然です。" },
+    { k: "接続副詞", c: ["Furthermore", "However", "Otherwise", "Instead"], a: 0, e: "機能面の利点に加え、「30日間無料トライアル」というお試しキャンペーンを追加提示するため Furthermore が合致します。" },
+    { k: "語彙(動詞)", c: ["create", "destroy", "cancel", "postpone"], a: 0, e: "無料アカウントを「作成・登録する（create）」が合致します。" }
+  ] },
+
+{ type: "広告・案内", title: "オーガニックレストラン「Green Leaf」オープン案内",
+  text: `Discover a healthier way to dine at Green Leaf Kitchen, opening this Friday in downtown Seattle! We take pride in serving farm-to-table dishes prepared with 100 percent organic, locally sourced ingredients. [1] Our seasonal menu features delicious plant-based entrees, fresh salads, and guilt-free desserts. [2] Join us for our Grand Opening weekend and enjoy a complimentary beverage with any main meal purchase. [3], reservations can easily be made online through our website. We look forward to [4] you a memorable dining experience!`,
+  ja: `今週金曜日、シアトルのダウンタウンにオープンする「グリーン・リーフ・キッチン」で、よりヘルシーな食事をご体験ください！100パーセントオーガニックで地産の食材を使用し、農場から食卓へ直結したお料理を提供することに誇りを持っております。旬のメニューには、美味しい植物由来のアントレ、フレッシュサラダ、罪悪感のないデザートが並びます。グランドオープニング週末にぜひお越しいただき、メイン料理のご注文で無料ドリンクをお楽しみください。さらに、ご予約はウェブサイトから簡単にオンラインで行えます。記憶に残る素晴らしいお食事体験をお届けできることを楽しみにしております！`,
+  qs: [
+    { k: "一文挿入", c: ["Our seasonal menu features plant-based entrees and salads.", "Seattle is known for its coffee culture.", "Parking in downtown Seattle can be expensive.", "The restaurant was designed by a local artist."], a: 0, e: "オーガニックレストランのコンセプト発表に続き、具体的な提供メニュー（植物性アントレやサラダ）を紹介する A が適しています。" },
+    { k: "一文挿入(オープン特典)", c: ["Join us for Grand Opening weekend and enjoy a free drink.", "Our head chef previously worked in Paris.", "We are looking to hire three new line cooks.", "Outside food and drinks are strictly prohibited."], a: 0, e: "メニュー紹介に続き、オープニング記念の来場特典（無料ドリンク進呈）を案内する A が自然です。" },
+    { k: "接続副詞", c: ["In addition", "However", "Otherwise", "Instead"], a: 0, e: "特典案内に加え、「オンライン予約も可能である」と便利情報を付け加えるため In addition が正解です。" },
+    { k: "語彙(動詞)", c: ["offering", "refusing", "warning", "delaying"], a: 0, e: "お客様に素晴らしい食事体験を「提供する・お届けする（offering）」が正解です。" }
+  ] },
+
+{ type: "広告・案内", title: "コワーキングスペース「Apex Workspace」会員募集",
+  text: `Looking for a professional workspace that adapts to your flexible lifestyle? Apex Workspace offers modern co-working desks, private offices, and fully equipped meeting rooms in the heart of the business district. [1] Enjoy high-speed fiber internet, unlimited gourmet coffee, and printing services included in all membership plans. [2] Whether you need a desk for a day or a private suite for a team, we have custom plans designed for your needs. [3], book a free guided tour this week and receive two free day passes. Upgrade your work environment [4]!`,
+  ja: `フレキシブルなライフスタイルに合ったプロフェッショナルな作業空間をお探しですか？「エイペックス・ワークスペース」は、ビジネス街の中心部でモダンなコワーキングデスク、個室オフィス、フル装備の会議室を提供しています。すべての会員プランに高速光インターネット、無制限のグルメコーヒー、印刷サービスが含まれています。1日だけのデスク利用でも、チームでの個室スイート利用でも、ニーズに合わせたカスタムプランをご用意しています。さらに、今週無料の見学ツアーをご予約いただくと、1日無料パスを2枚進呈いたします。今すぐ作業環境をアップグレードしましょう！`,
+  qs: [
+    { k: "一文挿入", c: ["Enjoy fiber internet and unlimited coffee with all plans.", "The business district has many fine restaurants.", "Laptops are not provided by the workspace.", "Public transportation is located nearby."], a: 0, e: "ワークスペースの概要に続き、全プランに含まれる魅力的なアメニティ（高速ネットやコーヒー無料）を説明する A がスムーズです。" },
+    { k: "一文挿入(プランの柔軟性)", c: ["Whether you need a desk for a day or a private suite, we have plans.", "Our staff members speak three languages.", "Monthly payments can be made via credit card.", "The building was renovated two years ago."], a: 0, e: "アメニティ紹介に続き、利用者の用途に応じた柔軟な契約プラン（1日利用〜チーム個室）を案内する A が適切です。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "Instead"], a: 0, e: "プランの案内に加え、「見学ツアー予約で特典進呈」とさらに魅力的な情報を付与するため Additionally が合致します。" },
+    { k: "副詞/語彙", c: ["today", "yesterday", "rarely", "hardly"], a: 0, e: "行動を即座に促す「今すぐ（today）」が文脈上最も合致します。" }
+  ] },
+
+{ type: "広告・案内", title: "ビジネス英会話スクール「GlobalTalk」のご案内",
+  text: `Master business English and boost your career with GlobalTalk Institute! We offer tailored, one-on-one online language coaching delivered by native-speaking corporate trainers. [1] Our practical curriculum focuses on presentation skills, negotiation tactics, and professional email writing. [2] Study at your own pace with 24/7 lesson scheduling through our mobile app. [3], sign up for a free diagnostic evaluation this month and get 20 percent off your first lesson package. Invest in your professional growth [4]!`,
+  ja: `「GlobalTalk（グローバルトーク）インスティテュート」でビジネス英語を習得し、キャリアを飛躍させましょう！ネイティブスピーカーの法人トレーナーによる、テーラーメイド マンツーマンのオンライン言語コーチングを提供しています。当校の実践的なカリキュラムは、プレゼンテーションスキル、交渉術、プロフェッショナルなメール作成に焦点を当てています。モバイルアプリから24時間いつでもレッスン予約が可能で、ご自身のペースで学習できます。さらに、今月無料診断評価にお申し込みいただくと、最初のレッスンパッケージが20パーセント引きになります。今すぐご自身のスキルアップ・成長に投資しましょう！`,
+  qs: [
+    { k: "一文挿入", c: ["Our practical curriculum focuses on presentations and negotiation.", "English is spoken in many countries worldwide.", "Online learning has become popular in recent years.", "Our offices are located in London and New York."], a: 0, e: "マンツーマンコーチングの案内に続き、具体的なカリキュラム内容（プレゼンや交渉術）を説明する A が適しています。" },
+    { k: "一文挿入(利便性の高さ)", c: ["Study at your own pace with 24/7 lesson scheduling.", "Textbooks must be purchased separately at a local store.", "Certificates are issued upon completion of fifty hours.", "Group classes are limited to ten students per room."], a: 0, e: "学習内容の説明に続き、受講システムの利便性（24時間いつでもアプリで予約可能）を伝える A がスムーズです。" },
+    { k: "接続副詞", c: ["Furthermore", "However", "Otherwise", "Instead"], a: 0, e: "システムの利便性に加え、「今なら20％引きキャンペーン」と追加インセンティブを提示するため Furthermore が正解です。" },
+    { k: "副詞/語彙", c: ["now", "never", "rarely", "seldom"], a: 0, e: "受講検討者へ「今すぐ（now）」投資・行動するよう訴えかける文脈です。" }
+  ] },
+
+{ type: "広告・案内", title: "カーシェアリングサービス「CityMove」のご案内",
+  text: `Need a vehicle without the expenses of car ownership? CityMove offers flexible, on-demand car sharing in over 500 locations across the city. Simply unlock any of our hybrid or electric vehicles using your smartphone app and drive away. [1] Fuel, comprehensive insurance, and 24/7 roadside assistance are included in every reservation. [2] Pay only for the minutes or hours you drive with no hidden monthly fees. [3], new users receive $25 in driving credit upon completing registration this week. Download the CityMove app today to [4] driving!`,
+  ja: `車を所有するコストをかけずに車が必要ですか？「CityMove（シティムーブ）」は、市内500か所以上のステーションで柔軟なオンデマンドのカーシェアリングを提供しています。スマートフォンアプリを使ってハイブリッド車や電気自動車のロックを解除し、すぐに走り出すだけです。燃料費、手厚い保険、24時間年中無休のロードサービスがすべての予約に含まれています。隠れた月額費用なしで、運転した分（分単位・時間単位）だけお支払いください。さらに、今週新規登録を完了された方には、25ドル分のドライブクレジットを進呈いたします。今すぐCityMoveアプリをダウンロードして、ドライブを始めましょう！`,
+  qs: [
+    { k: "一文挿入", c: ["Fuel, insurance, and roadside assistance are included.", "Parking in the city center can be difficult to find.", "Traditional car rental agencies require a paper contract.", "Public buses run every fifteen minutes during peak hours."], a: 0, e: "サービス利用手順に続き、料金に含まれるお得なアメニティ（燃料代・保険込み）を説明する A が自然です。" },
+    { k: "一文挿入(明朗会計)", c: ["Pay only for the minutes or hours you drive with no hidden fees.", "Our fleet includes luxury sports cars for special occasions.", "Drivers must be at least twenty-five years old.", "Vehicle washing is performed automatically every night."], a: 0, e: "オールインワン料金に続き、明朗な従量課金システム（運転した時間分だけ支払う）をアピールする A が適しています。" },
+    { k: "接続副詞", c: ["In addition", "However", "Otherwise", "Instead"], a: 0, e: "明朗会計のシステムに加え、「新規登録で25ドル分進呈」というキャンペーン情報を追加するため In addition が合致します。" },
+    { k: "語彙(動詞)", c: ["start", "stop", "prevent", "delay"], a: 0, e: "今すぐドライブを「始める（start）」が最後の締めくくりとして完璧です。" }
+  ] },
+
+{ type: "広告・案内", title: "オンライン会計ソフト「QuickLedger」のご案内",
+  text: `Simplify your business accounting with QuickLedger, the top-rated cloud financial software designed for small businesses and freelancers. Automatically track income, send professional invoices, and manage tax reporting with ease. [1] Sync your bank accounts securely to reconcile transactions in real time. [2] Our mobile app lets you capture and upload receipts on the go so you never lose a deduction. [3], sign up today and enjoy a 50 percent discount on your first six months. Try QuickLedger risk-free with our 14-day free [4]!`,
+  ja: `小規模事業者やフリーランス向けに設計された、高評価のクラウド財務ソフトウェア「QuickLedger（クイックレジャー）」で、ビジネス会計をシンプルにしましょう！収入の自動追跡、プロフェッショナルな請求書の送信、確定申告・税務レポートの管理が簡単に行えます。銀行口座を安全に同期し、リアルタイムで取引を照合できます。モバイルアプリを使えば外出先で領収書を撮影・アップロードできるため、控除を逃すこともありません。さらに、本日ご登録いただくと最初の6か月間が50パーセント割引になります。14日間の無料トライアルで、リスクなしでQuickLedgerをお試しください！`,
+  qs: [
+    { k: "一文挿入", c: ["Sync your bank accounts securely to reconcile in real time.", "Tax laws change frequently every year.", "Hiring a personal accountant can be very expensive.", "Our main office is located in San Francisco."], a: 0, e: "ソフトの主な機能（請求書作成等）に続き、自動同期機能によるリアルタイム照合という強みを説明する A が自然です。" },
+    { k: "一文挿入(モバイルアプリの利便性)", c: ["Our mobile app lets you capture receipts on the go.", "Computers should be protected with antivirus software.", "Invoices can be printed on standard paper.", "We offer customer support in five languages."], a: 0, e: "銀行同期に続き、モバイルでの領収書撮影機能という便利な使い方を伝える A が適しています。" },
+    { k: "接続副詞", c: ["Additionally", "However", "Otherwise", "Instead"], a: 0, e: "便利機能の案内に加え、「6か月間半額割引」というキャンペーンを繋ぐため Additionally が正解です。" },
+    { k: "語彙(名詞)", c: ["trial", "punishment", "fine", "loss"], a: 0, e: "14日間の「無料トライアル（free trial）」が定型文脈です。" }
+  ] },
+
+{ type: "広告・案内", title: "ソーラーパネル設置「EcoSolar Solutions」の無料見積",
+  text: `Slash your monthly electricity bills and reduce your carbon footprint with EcoSolar Solutions! We provide custom residential solar panel design, installation, and battery storage systems. [1] Our high-efficiency panels generate maximum power even on cloudy days. [2] Take advantage of current federal tax credits and state incentives to save up to 30 percent on installation costs. [3], all installations come with a 25-year comprehensive warranty for total peace of mind. Call 555-0199 today for your free on-site [4]!`,
+  ja: `「EcoSolar（エコソーラー）ソリューションズ」で、毎月の電気代を大幅に削減し、CO2排出量を減らしましょう！住宅用カスタムソーラーパネルの設計、施工、蓄電池システムを提供しております。当社の高効率パネルは、曇りの日でも最大限の電力を発電します。現在の連邦税控除や州の優遇制度を活用して、設置費用を最大30パーセント節約しましょう。さらに、すべての設置には完全な安心をお届けする25年間の包括保証が付いております。無料の現地見積もり・査定のため、今すぐ 555-0199 までお電話ください！`,
+  qs: [
+    { k: "一文挿入", c: ["Our high-efficiency panels generate power even on cloudy days.", "Electricity prices have fluctuated over the past decade.", "Solar technology was first developed in the 1950s.", "Roofs must be inspected before any construction."], a: 0, e: "サービス案内に続き、自社ソーラーパネルの優れた性能（曇天でも発電可能）を説明する A が適しています。" },
+    { k: "一文挿入(費用面での助成)", c: ["Take advantage of tax credits to save up to 30 percent.", "Our technicians complete most installations in one day.", "Battery storage units are sold separately.", "Electric cars can be charged using solar energy."], a: 0, e: "性能アピールに続き、政府の税制優遇を活用したコスト削減（最大30％OFF）を案内する A が自然です。" },
+    { k: "接続副詞", c: ["In addition", "However", "Otherwise", "Instead"], a: 0, e: "コスト節約に加え、「25年間の長期保証」という安心材料を追加提示するため In addition が合致します。" },
+    { k: "語彙(名詞)", c: ["estimate", "refusal", "cancellation", "fine"], a: 0, e: "無料の現地「見積もり・査定（free estimate / consultation）」を求める文脈です。" }
+  ] },
+
+{ type: "広告・案内", title: "ミールキット宅配「FreshChef」のご案内",
+  text: `Tired of spending hours planning meals and grocery shopping? FreshChef delivers pre-portioned, chef-designed meal kits right to your doorstep every week. Choose from over 30 delicious recipes created by professional nutritionists. [1] All ingredients are pre-washed, chopped, and ready to cook in under 20 minutes. [2] Enjoy healthy, home-cooked dinners without the hassle of meal prep or wasted groceries. [3], skip or cancel your subscription anytime with no cancellation fees. Order your first box today and get 40 percent off with promo code [4]!`,
+  ja: `献立の検討や買い出しに何時間も費やすことに疲れていませんか？「FreshChef（フレッシュシェフ）」は、シェフが考案した計量済みのミールキットを毎週ご自宅の玄関まで直接お届けします。専門の栄養士が作成した30種類以上の美味しいレシピからお選びいただけます。すべての食材は洗われ、カット済みで、20分未満で調理可能です。下ごしらえの手間や食材のムダなく、ヘルシーな手料理の夕食をお楽しみください。さらに、キャンセル料なしでいつでも定期購入のお休みや解約が可能です。プロモコードを使用して本日最初のボックスを注文し、40パーセント引きを手に入れましょう！`,
+  qs: [
+    { k: "一文挿入", c: ["All ingredients are pre-washed, chopped, and ready in 20 mins.", "Grocery stores are located throughout the metropolitan area.", "Cooking classes are held at our downtown kitchen.", "Many people prefer eating out at local restaurants."], a: 0, e: "サービス概要（ミールキット配送）に続き、調理の圧倒的な手軽さ（カット済み・20分以内で完成）を説明する A が合致します。" },
+    { k: "一文挿入(サービスのベネフィット)", c: ["Enjoy healthy home-cooked dinners without the hassle.", "Our delivery drivers wear official company uniforms.", "Recipes are updated every three months.", "Cardboard boxes should be recycled properly."], a: 0, e: "手軽さに続き、このサービスが得られる生活上のメリット（手間なく手料理が楽しめる）を伝える A がスムーズです。" },
+    { k: "接続副詞", c: ["Furthermore", "However", "Otherwise", "Instead"], a: 0, e: "メリットの紹介に加え、「いつでも解約・お休み自由」と利便性を担保するため Furthermore が正解です。" },
+    { k: "語彙(名詞)", c: ["FRESH40", "CANCEL", "EXPIRE", "DELAY"], a: 0, e: "プロモコードとして文脈上自然なコード名（FRESH40など）が正解となります。" }
+  ] },
+
+{ type: "広告・案内", title: "オフィス機器リース「Apex Office Solutions」のご案内",
+  text: `Upgrade your workplace productivity with flexible office equipment leasing from Apex Office Solutions! We provide state-of-the-art multifunction copiers, laser printers, and digital scanners tailored to your business volume. [1] All leases include full maintenance, automated toner replenishment, and same-day technical support. [2] Avoid large upfront capital costs while keeping your technology current. [3], request a free equipment audit this month and receive a $100 gift card upon contract signing. Contact our team today to [4] your workspace!`,
+  ja: `「エイペックス・オフィス・ソリューションズ」の柔軟なオフィス機器リースで、職場の生産性を向上させましょう！事業規模に合わせた最新鋭の多機能複合機、レーザープリンター、デジタルスキャナーを提供いたします。すべてのリースには、完全なメンテナンス、自動トナー補給、即日技術サポートが含まれています。テクノロジーを最新に保ちながら、巨額の初期初期費用を回避しましょう。さらに、今月無料の機器監査を依頼し、契約締結で100ドルのギフトカードをお受け取りください。今すぐ当社チームに連絡して、貴社の作業空間を最新化しましょう！`,
+  qs: [
+    { k: "一文挿入", c: ["All leases include full maintenance and automated toner refill.", "Paper supplies can be ordered online from our store.", "The office equipment market is highly competitive.", "Old copiers can be traded in for cash."], a: 0, e: "提供する機器の案内に続き、リース契約に含まれる至れり尽くせりの保守・補給サービスを説明する A が適しています。" },
+    { k: "一文挿入(経営上のメリット)", c: ["Avoid large upfront capital costs while keeping technology current.", "Our technicians undergo background checks.", "Printing in color is more expensive than black and white.", "Most contracts are signed for a three-year period."], a: 0, e: "保守サポートの充実に続き、リースを選択する最大の経営的メリット（初期費用の抑制）を提示する A が自然です。" },
+    { k: "接続副詞", c: ["In addition", "However", "Otherwise", "Instead"], a: 0, e: "経営メリットの提示に加え、「機器監査でギフトカード進呈」とインセンティブを追加案内するため In addition が合致します。" },
+    { k: "語彙(動詞)", c: ["modernize", "destroy", "neglect", "postpone"], a: 0, e: "職場を「最新化する・効率化する（modernize）」が最後の呼びかけとして完璧です。" }
+  ] },
+
 { type: "ビジネスメール", title: "件名：配送遅延のお知らせ",
   text: `Dear Ms. Harper,
 
