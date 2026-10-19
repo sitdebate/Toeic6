@@ -1186,6 +1186,7 @@ Looking to get in shape this year? Sunrise Fitness Club offers a [1] range of cl
 ];
 
 // ===== ロジック =====
+// ===== ロジック処理 =====
 const $ = (id) => document.getElementById(id);
 const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const L = "ABCD";
@@ -1203,7 +1204,7 @@ function start() {
 function showPassage() {
   clearInterval(timerId); qi = 0;
   const p = list[pi];
-  $("pLabel").textContent = "文章 " + (pi + 1) + " / " + list.length + "　" + p.type;
+  $("pLabel").textContent = "文章 " + (pi + 1) + " / " + list.length + " " + p.type;
   $("pTitle").textContent = p.title;
   drawText(); renderQ();
   t0 = Date.now();
@@ -1233,7 +1234,7 @@ function drawText() {
 
 function renderQ() {
   const q = list[pi].qs[qi];
-  $("qLabel").textContent = "空欄 [ " + (qi + 1) + " ] / 4　(" + q.k + ")";
+  $("qLabel").textContent = "空欄 [ " + (qi + 1) + " ] / 4 (" + q.k + ")";
   const box = $("options"); box.innerHTML = "";
   q.c.forEach((t, i) => {
     const b = document.createElement("button");
@@ -1277,21 +1278,15 @@ function finish() {
   $("review").innerHTML = h;
 }
 
-// ===== イベント & タイマー連動設定 =====
-
-// タイマーボタンのクリックイベント
+// ===== イベント＆タイマー確実連動 =====
 document.querySelectorAll(".t-btn").forEach(b => {
   b.addEventListener("click", () => {
-    // すべてのタイマーボタンから active を外す
     document.querySelectorAll(".t-btn").forEach(x => x.classList.remove("active"));
-    // クリックされたボタンに active を付与
     b.classList.add("active");
-    // 設定された秒数を取得
     timerSec = Number(b.dataset.t);
   });
 });
 
-// モード選択ボタンのクリックイベント
 document.querySelectorAll("[data-mode]").forEach(m => {
   m.addEventListener("click", () => {
     document.querySelectorAll("[data-mode]").forEach(x => x.classList.remove("sel"));
@@ -1300,17 +1295,11 @@ document.querySelectorAll("[data-mode]").forEach(m => {
   });
 });
 
-// 本文中の空欄 [1]〜[4] タップで設問切り替え
 document.addEventListener("click", (e) => {
   const b = e.target.closest(".blank");
-  if (b) {
-    qi = Number(b.dataset.i);
-    drawText();
-    renderQ();
-  }
+  if (b) { qi = Number(b.dataset.i); drawText(); renderQ(); }
 });
 
-// スタートボタンを押した際に、現在選択されているタイマーの秒数を確実に反映
 $("start").onclick = () => {
   const activeTimerBtn = document.querySelector(".t-btn.active");
   if (activeTimerBtn) {
@@ -1322,21 +1311,14 @@ $("start").onclick = () => {
 $("prev").onclick = () => move(-1);
 $("nxt").onclick = () => move(1);
 $("fin").onclick = () => endPassage(false);
-$("back").onclick = () => {
-  if (confirm("トップに戻りますか？\n進行中の結果は失われます。")) {
-    clearInterval(timerId);
-    go("home");
-  }
-};
+$("back").onclick = () => { if (confirm("トップに戻りますか？\n進行中の結果は失われます。")) { clearInterval(timerId); go("home"); } };
 $("retry").onclick = start;
 $("toHome").onclick = () => go("home");
 
-// 初期化表示
 if ($("mockDesc")) {
   $("mockDesc").textContent = Math.min(4, PASSAGES.length) + "文章(" + Math.min(4, PASSAGES.length) * 4 + "問)を連続で解く本番形式";
 }
 
-// ページ読み込み時の初期タイマー取得
 const initTimerBtn = document.querySelector(".t-btn.active");
 if (initTimerBtn) {
   timerSec = Number(initTimerBtn.dataset.t);
