@@ -1277,22 +1277,69 @@ function finish() {
   $("review").innerHTML = h;
 }
 
-// ===== イベント =====
-document.addEventListener("click", (e) => {
-  const t = e.target.closest(".t-btn");
-  if (t) { document.querySelectorAll(".t-btn").forEach(x => x.classList.remove("active")); t.classList.add("active"); timerSec = Number(t.dataset.t); return; }
-  const m = e.target.closest("[data-mode]");
-  if (m) { document.querySelectorAll("[data-mode]").forEach(x => x.classList.remove("sel")); m.classList.add("sel"); mode = m.dataset.mode; return; }
-  const b = e.target.closest(".blank");
-  if (b) { qi = Number(b.dataset.i); drawText(); renderQ(); }
+// ===== イベント & タイマー連動設定 =====
+
+// タイマーボタンのクリックイベント
+document.querySelectorAll(".t-btn").forEach(b => {
+  b.addEventListener("click", () => {
+    // すべてのタイマーボタンから active を外す
+    document.querySelectorAll(".t-btn").forEach(x => x.classList.remove("active"));
+    // クリックされたボタンに active を付与
+    b.classList.add("active");
+    // 設定された秒数を取得
+    timerSec = Number(b.dataset.t);
+  });
 });
-$("start").onclick = start;
+
+// モード選択ボタンのクリックイベント
+document.querySelectorAll("[data-mode]").forEach(m => {
+  m.addEventListener("click", () => {
+    document.querySelectorAll("[data-mode]").forEach(x => x.classList.remove("sel"));
+    m.classList.add("sel");
+    mode = m.dataset.mode;
+  });
+});
+
+// 本文中の空欄 [1]〜[4] タップで設問切り替え
+document.addEventListener("click", (e) => {
+  const b = e.target.closest(".blank");
+  if (b) {
+    qi = Number(b.dataset.i);
+    drawText();
+    renderQ();
+  }
+});
+
+// スタートボタンを押した際に、現在選択されているタイマーの秒数を確実に反映
+$("start").onclick = () => {
+  const activeTimerBtn = document.querySelector(".t-btn.active");
+  if (activeTimerBtn) {
+    timerSec = Number(activeTimerBtn.dataset.t);
+  }
+  start();
+};
+
 $("prev").onclick = () => move(-1);
 $("nxt").onclick = () => move(1);
 $("fin").onclick = () => endPassage(false);
-$("back").onclick = () => { if (confirm("トップに戻りますか？\n進行中の結果は失われます。")) { clearInterval(timerId); go("home"); } };
+$("back").onclick = () => {
+  if (confirm("トップに戻りますか？\n進行中の結果は失われます。")) {
+    clearInterval(timerId);
+    go("home");
+  }
+};
 $("retry").onclick = start;
 $("toHome").onclick = () => go("home");
-$("mockDesc").textContent = Math.min(4, PASSAGES.length) + "文章(" + Math.min(4, PASSAGES.length) * 4 + "問)を連続で解く本番形式";
-timerSec = Number(document.querySelector(".t-btn.active").dataset.t);
+
+// 初期化表示
+if ($("mockDesc")) {
+  $("mockDesc").textContent = Math.min(4, PASSAGES.length) + "文章(" + Math.min(4, PASSAGES.length) * 4 + "問)を連続で解く本番形式";
+}
+
+// ページ読み込み時の初期タイマー取得
+const initTimerBtn = document.querySelector(".t-btn.active");
+if (initTimerBtn) {
+  timerSec = Number(initTimerBtn.dataset.t);
+}
+
 go("home");
